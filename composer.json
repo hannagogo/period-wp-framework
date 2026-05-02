@@ -1,0 +1,9 @@
+{
+  "name": "period/wp-framework",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Period\\WpFramework\\": "src/"
+    }
+  }
+}

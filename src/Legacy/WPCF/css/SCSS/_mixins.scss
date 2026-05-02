@@ -1,0 +1,124 @@
+@mixin wpcf-max-screen($break-point) {
+  @media screen and (max-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin wpcf-min-screen($break-point) {
+  @media screen and (min-width: $break-point) {
+    @content;
+  }
+}
+
+@mixin wpcf-screen($break-point-min, $break-point-max) {
+  @media screen and (min-width: $break-point-min) and (max-width: $break-point-max) {
+    @content;
+  }
+}
+
+@mixin wpcf-relative-height($width, $height) {
+ padding-top: $height / $width * 100%;
+}
+
+
+@mixin wpcf-bg-gradient($color_from: #000, $color_to: #fff, $angle: 180deg) {
+  background: linear-gradient($angle, $color_from, $color_to);
+  // USAGE : @include wpcf-bg-gradient;
+}
+
+@mixin wpcf-bg-marker($color, $thickness: 30%) {
+ $nocolor_thickness: 100% - $thickness;
+ background: linear-gradient(to bottom, transparent $nocolor_thickness, $color  $nocolor_thickness $thickness)
+}
+
+@mixin wpcf-gradient-text($angle: 45deg, $color: #f00, $amount: 20%) {
+  color: $color;
+  background: -webkit-linear-gradient($angle, $color, adjust-hue($color, $amount));
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  display: inline-block;
+  // USAGE : @include gradient-text(120deg, #2d0, 90%);
+}
+
+@mixin wpcf-edged-text-2px($edge_color: #fff) {
+ text-shadow: 
+    $edge_color 2px 0px,  $edge_color -2px 0px,
+    $edge_color 0px -2px, $edge_color 0px 2px,
+    $edge_color 2px 2px , $edge_color -2px 2px,
+    $edge_color 2px -2px, $edge_color -2px -2px,
+    $edge_color 1px 2px,  $edge_color -1px 2px,
+    $edge_color 1px -2px, $edge_color -1px -2px,
+    $edge_color 2px 1px,  $edge_color -2px 1px,
+    $edge_color 2px -1px, $edge_color -2px -1px;
+}
+
+@mixin wpcf-text-width($x, $y, $fix_width:1) { // @include wpcf-text-width(2, 1) ... -> width:200%
+ -moz-transform: scale($x, $y);
+ -webkit-transform: scale($x, $y);
+ -o-transform: scale($x, $y);
+ -ms-transform: scale($x, $y);
+ transform: scale($x, $y);
+ @if $x > 1 {
+  @if $fix_width == 1 {
+   width: 1 / $x * 100%
+  }
+ }
+}
+
+@mixin wpcf-fadein-block($delay, $shift) {
+ .fadein_block {
+  opacity : 0;
+  transform : translate(0, $shift);
+  transition : all $delay;
+ }
+
+/* 画面内に入った状態 */
+ .fadein_block.scrollin {
+  opacity : 1;
+  transform : translate(0, 0);
+ }
+/* //
+ $(window).scroll(function(){
+  var w = $(this)
+  $('.fadein_block').each(function(){
+   var e = $(this)
+     , pos = e.offset().top
+     , scroll = w.scrollTop()
+     , windowHeight = w.height()
+     
+   if (scroll > pos - windowHeight) {
+    e.addClass('scrollin');
+   }
+ })
+})
+// */
+}
+
+%absolute_xy_center {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ -webkit-transform: translate(-50%, -50%);
+}
+%abstract_image_box {
+ display: flex;
+ flex-wrap: wrap;
+ .abstract_image {
+  flex-basis: 50%;
+  img {
+   width: 100%;
+   height: auto;
+   display: block;
+  }
+ }
+ .abstract_copy {
+  z-index: 10;
+  flex-basis: 100%;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  margin: auto;
+  @extend %absolute_xy_center;
+ }
+}

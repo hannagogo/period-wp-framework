@@ -1,0 +1,11 @@
+%default_font {
+ font-family: メイリオ, Meiryo, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro"," ＭＳ Ｐゴシック", "MS P Gothic", "IPA Pゴシック", "Takao Pゴシック", "TakaoPGothic", "VL Pゴシック", "VL PGothic", "IPAPGothic", Osaka, Helvetica, Arial, sans-serif;
+}
+%wrapped_img {
+ width: 100%;
+ height: auto;
+}
+%pseudo_block {
+ content: "";
+ display: block;
+}

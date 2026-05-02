@@ -1,0 +1,30 @@
+<!doctype html>
+<html dir="ltr" lang="ja">
+<head >
+<meta charset="UTF-8">
+	<title>How to add rewrite rules</title>
+	</head>
+<body>
+<h1>Adding rewrite rules</h1>
+<h2>1. Create new post type</h2>
+<code><pre>
+new PostType(array(
+ 'name'=> 'post-type-name',
+// some args
+// :
+// :
+ 'custom_rules' => array(
+  'pattern' => 'mapping'
+//'(?:/(\d{4}/?)?(?:/(\d{1,2})/?)?(?:/(\d{1,2})/?)?)?/?$' => 'index.php?' . implode('&', array('scy=$matches[1]&scm=$matches[2]&scd=$matches[3]') ),
+) ) )
+</pre></code>
+<h2>2. Enable query_vars</h2>
+<code><pre>
+ enable_query_vars(array("scy", "scm", "scd"));
+</pre></code>
+<h2>3. Get value(s)</h2>
+<code><pre>
+$y=get_query_var('scy')
+</pre></code>
+	</body>
+	</html>

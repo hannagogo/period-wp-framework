@@ -1,0 +1,16 @@
+To add WPCF Option Fields:
+(for User):
+
+1. Filter array of setting fields with WPCF_Setting_Fields.
+    i.e. array('OPTION_NAME' => '<input name="OPTION_NAME" type="text" />');
+
+2. Filter option names with WPCF_Option_Names.
+    i.e. array('OPTION_NAME' => 'Option Fancy Name (Label)')
+
+3. (if necessary) Filter posted data with WPCF_Posted_Settings.
+    i.e. array('OPTION_NAME' => 'Option Value')
+
+(for Developer):
+1. add value(s) in _initialize_option_names
+2. (if necessary) add process in _filter_setting_fields
+3. (if necessary) add process in _filter_posted_settings

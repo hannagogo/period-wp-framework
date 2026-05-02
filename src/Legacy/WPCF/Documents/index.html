@@ -1,0 +1,105 @@
+<!doctype html>
+<html dir="ltr" lang="ja">
+<head >
+<meta charset="UTF-8">
+	<title>WP Custom Functions Documentation</title>
+	</head>
+	<body>
+	<h1>WP Custom Functions</h1>
+	<h2>What it is</h2>
+	<p>
+	A WordPress Theme programming framework.
+	</p>
+	
+	<h2>What you can do:</h2>
+	<p>
+	Very limited examples..
+	</p>
+	
+	<p>
+	Adding a post type:
+	</p>
+	<pre><code >
+ do_action('WPCF_Add_PostTypes', array(
+  apply_filters('WPCF_New_PostType', array(
+   'name' => 'links',
+   'label' => 'Links',
+   'singular_name' => 'link',
+   'taxonomies' => array(
+    array(
+     'name' => 'link-category',
+     'label'=> 'Link Category',
+     'manage_columns'=>1
+    )
+   ),
+   'meta_box' => array(
+    'name' => 'link_info',
+    'title'=> 'Link Information',
+    'fields' => array(
+     'link_url' => array('type' => 'textfield', 'label' => 'URL', 'rows'=>33, 'cols'=>1),
+     'link_rss' => array('type' => 'textfield', 'label' => 'RSS URL', 'rows'=>33, 'cols'=>1),
+     'link_target' => array('type' => 'radio', 'label' => 'Link Target', 'values'=>array('_blank','_top','_none'), 'default'=>'_blank'),
+     'link_image' => array('type' => 'image', 'label' => 'Banner Image',),
+     'link_image_url' => array('type' => 'textfield', 'label' => 'Banner Image URL', 'rows'=>33, 'cols'=>1),
+     'link_rating' => array('type'=> 'select', 'values' => array('',0,1,2,3,4,5,6,7,8,9,10), 'label'=>'Rating', 'default'=>'')
+    )
+   )
+  ) ),
+ ) );
+	</code></pre>
+	<p>
+	Determines if specific post type is queried:
+	</p>
+	<pre><code >
+function is_post($post = NULL) {
+ return apply_filters('WPCF_Is_PostType', 'post', $post);
+}
+	</code></pre>
+	<p>
+	Determines if specific category/taxonomy is queried:
+	</p>
+	<pre><code >
+function is_news($post = null) {
+ return apply_filters('WPCF_In_Category', 1, $post);
+}
+function is_some_taxonomy_term($post = null) {
+ return apply_filters('WPCF_In_Taxonomy_Term', 'some_taxonomy', 'some_term', $post);
+}
+	</code></pre>
+
+	<p>
+	Determines if specific user is logged in:
+	</p>
+	<pre><code >
+function is_admin_user() {
+ return apply_filters('WPCF_Is_Logged_In', 1);
+}
+	</code></pre>
+	<p>
+	Setting JavaScript libraries:
+	</p>
+	<pre><code >
+do_action('WPCF_Set_JS_Handle', array(
+ 'jquery', 'jquery.easing', 'jquery.mousewheel',
+ 'jquery.fancybox2',
+ 'jquery.marquee',
+ 'jquery.corner'
+) );
+	</code></pre>
+	<p>
+	Setting JavaScript code requires jQuery:
+	</p>
+	<pre><code >
+do_action('WPCF_Set_JQuery_Code', array('$("#some_id").css("color","red")','$("#some_other_id").hide().fadeIn()') );
+	</code></pre>
+	<p>
+	Setting CSS code:
+	</p>
+	<pre><code >
+do_action('WPCF_Set_CSS_Code', '.post_thumbnail { float: left; }
+ h4 { clear:none; }
+');
+	</code></pre>
+
+	</body>
+	</html>

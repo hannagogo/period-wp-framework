@@ -6,17 +6,20 @@ namespace Period\WpFramework;
 
 use Period\WpFramework\Infrastructure\ShortcodeRegistrar;
 use Period\WpFramework\Support\ArgsResolver;
+use Period\WpFramework\View\Renderer;
 
 final class Application
 {
     private string $basePath;
     private ArgsResolver $argsResolver;
+    private Renderer $renderer;
     private bool $booted = false;
 
     public function __construct(string $basePath)
     {
         $this->basePath = rtrim($basePath, '/');
         $this->argsResolver = new ArgsResolver();
+        $this->renderer = new Renderer($this->basePath . '/templates');
     }
 
     public function boot(): void
@@ -38,15 +41,11 @@ final class Application
             'class' => '',
         ]);
 
-        $label = esc_html((string) $args['label']);
-        $url = esc_url((string) $args['url']);
-        $class = esc_attr(trim('period-wp-button ' . (string) $args['class']));
-
-        if ($url === '') {
-            return sprintf('<span class="%s">%s</span>', $class, $label);
-        }
-
-        return sprintf('<a class="%s" href="%s">%s</a>', $class, $url, $label);
+        return $this->renderer->render('button', [
+            'label' => (string) $args['label'],
+            'url' => (string) $args['url'],
+            'class' => trim('period-wp-button ' . (string) $args['class']),
+        ]);
     }
 
     public function basePath(): string

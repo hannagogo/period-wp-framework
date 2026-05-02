@@ -1,0 +1,179 @@
+@function map-deep-get($map, $keys...) {
+/* 
+$mapの中から、可変長引数を使って指定したキーを使い、ネストした値を取得します。
+記事で紹介されていたコードから、map-has-key()による判定処理を追加しています。
+$configure: (
+  breakpoints: (
+    md: 992px
+  ),
+  z-index: (
+    header: 1000,
+    modal: 2000
+  )
+);
+@debug map-deep-get($configure, z-index, modal); //2000
+*/
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return null;
+    }
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+@function map-deep-set($map, $keys...) {
+/*
+$mapに対してネストしたキーを指定して、一気に値を設定できます。
+可変長引数の最後の1つは設定する値になります。
+sample.scss
+$configure: (
+  breakpoints: (
+    md: 992px
+  ),
+  z-index: (
+    header: 1000,
+    modal: 2000
+  )
+);
+
+@debug map-deep-set($configure, breakpoints, lg, 1200px);
+// (
+//   breakpoints: (
+//     md: 992px,
+//     lg: 1200px
+//   ),
+//   z-index: (
+//     header: 1000,
+//     modal: 2000
+//   )
+// )
+*/
+  $map-list: ($map,);
+  $result: null;
+
+  @if length($keys) == 2 {
+    @return map-merge($map, (nth($keys, 1): nth($keys, -1)));
+  }
+
+  @for $i from 1 through length($keys) - 2 {
+    $map-list: append($map-list, map-get(nth($map-list, -1), nth($keys, $i)));
+  }
+
+  @for $i from length($map-list) through 1 {
+    $result: map-merge(nth($map-list, $i), (nth($keys, $i): if($i == length($map-list), nth($keys, -1), $result)));
+  }
+
+  @return $result;
+}
+
+@function map-has-keys($map, $keys...) {
+/* map-has-key()では一つのキーを確認するのみでしたが、以下の関数では確認したいキーを複数指定できます。
+指定したキーの内、一つでも存在しないキーが存在する場合はfalseを返します。
+sample.scss
+$breakpoints: (
+  sm: 768px,
+  md: 992px,
+  lg: 1200px
+);
+
+@debug map-has-keys($breakpoints, sm, lg); //true
+@debug map-has-keys($breakpoints, sm, xl); //false
+@debug map-has-keys($breakpoints, hoge, fuga); //false
+*/
+  @each $key in $keys {
+    @if not map-has-key($map, $key) {
+      @return false;
+    }
+  }
+
+  @return true;
+}
+
+
+
+@function map-zip($keys, $values) {
+/*
+ キーのリスト、値のリストの2つから新しいmapを生成して返します。
+$sizes: sm, md, lg;
+$widths: 768px, 992px, 1200px;
+
+@debug map-zip($sizes, $widths);
+// (
+//   sm: 768px,
+//   md: 992px,
+//   lg: 1200px
+// )
+ */
+  $l-keys: length($keys);
+  $l-values: length($values);
+  $min: min($l-keys, $l-values);
+  $map: ();
+
+  @if $l-keys != $l-values {
+    @warn "There are #{$l-keys} key(s) for #{$l-values} value(s) in the map for `map-zip`. "
+        + "Resulting map will only have #{$min} pairs.";
+  }
+
+  @if $min == 0 {
+    @return $map;
+  }
+
+  @for $i from 1 through $min {
+    $map: map-merge($map, (nth($keys, $i): nth($values, $i)));
+  }
+
+  @return $map;
+}
+
+
+@function map-extend($map, $maps...) {
+/* 
+複数のmapをマージしていきます。可変長引数の最後の値にtrueを与えることで、ネストしたmapに対しても実行していきます。
+@debug map-extend($map1, $map2, true);
+// (
+//   key1: "value1",
+//   key2: (
+//     key2-1: "value2-1-2",
+//     key2-2: "value2-2-2"
+//   )
+// )
+*/
+  $last: nth($maps, -1);
+  $deep: $last == true;
+  $max: if($deep, length($maps) - 1, length($maps));
+
+  @for $i from 1 through $max {
+    $current: nth($maps, $i);
+
+    @if not $deep {
+      $map: map-merge($map, $current);
+
+    } @else {
+      @each $key, $value in $current {
+        @if type-of($value) == "map" and type-of(map-get($map, $key)) == "map" {
+          $value: map-extend(map-get($map, $key), $value, true);
+        }
+        $map: map-merge($map, ($key: $value));
+      }
+    }
+  }
+
+  @return $map;
+}
+sample.scss
+$map1: (
+  key1: "value1",
+  key2: (
+    key2-1: "value2-1"
+  )
+);
+
+$map2: (
+  key2: (
+    key2-1: "value2-1-2",
+    key2-2: "value2-2-2"
+  )
+);
+

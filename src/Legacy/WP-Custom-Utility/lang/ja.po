@@ -1,0 +1,997 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP_CustomUtility\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-29 10:50+0900\n"
+"PO-Revision-Date: 2024-07-29 11:12+0900\n"
+"Last-Translator: Omi <omi@design-arts.jp>\n"
+"Language-Team: Designers' Artifacts\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 3.4.4\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+"X-Poedit-SearchPathExcluded-1: css\n"
+"X-Poedit-SearchPathExcluded-2: Documents\n"
+"X-Poedit-SearchPathExcluded-3: lib\n"
+
+#: WP_CustomUtility_MetaBox.php:324
+msgid "Are you sure you want to delete the field?"
+msgstr "入力欄を削除してもいいですか？"
+
+#: WP_CustomUtility_MetaBox.php:325
+msgid "Delete Field Confirmation"
+msgstr "入力欄削除の確認"
+
+#: WP_CustomUtility_MetaBox.php:326
+msgid "Are you sure you want to delete the media field?"
+msgstr "メディア（画像）を削除してもいいですか？"
+
+#: WP_CustomUtility_MetaBox.php:327
+msgid "Delete Media Field Confirmation"
+msgstr "メディア（画像）入力欄削除の確認"
+
+#: WP_CustomUtility_MetaBox.php:328
+msgid "Delete"
+msgstr "削除"
+
+#: WP_CustomUtility_MetaBox.php:329 WP_CustomUtility_MetaBox.php:624
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: WP_CustomUtility_MetaBox.php:616
+msgid "Select/Upload Image"
+msgstr "画像を選択／アップロード"
+
+#: WP_CustomUtility_MetaBox.php:617 WP_CustomUtility_MetaBox.php:623
+msgid "Clear Image"
+msgstr "画像を削除"
+
+#: WP_CustomUtility_MetaBox.php:621
+msgid "Are you sure you want to delete the image?"
+msgstr "画像を削除してもいいですか？"
+
+#: WP_CustomUtility_MetaBox.php:622
+msgid "Delete Image Confirmation"
+msgstr "画像削除の確認"
+
+#: WP_CustomUtility_MetaBox.php:630
+msgid "Error occured while requesting image by ajax."
+msgstr "Ajaxで画像を取得する際にエラーが発生しました。"
+
+#: WP_CustomUtility_MetaBox.php:727
+msgid "Add Media"
+msgstr "メディア追加"
+
+#: WP_CustomUtility_MetaBox.php:737
+msgid "Finish Upload"
+msgstr "アップロード終了"
+
+#: WP_CustomUtility_PostType_Object.php:157
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: WP_CustomUtility_PostType_Object.php:280
+#: WP_CustomUtility_PostType_Object.php:285 WP_CustomUtility_Taxonomy.php:175
+#, php-format
+msgid "Add New %s"
+msgstr "%sを新規作成"
+
+#: WP_CustomUtility_PostType_Object.php:286
+#: WP_CustomUtility_PostType_Object.php:463 WP_CustomUtility_Taxonomy.php:172
+#, php-format
+msgid "Edit %s"
+msgstr "%sを編集"
+
+#: WP_CustomUtility_PostType_Object.php:287 WP_CustomUtility_Taxonomy.php:176
+#, php-format
+msgid "New %s"
+msgstr "新規%s"
+
+#: WP_CustomUtility_PostType_Object.php:288 WP_CustomUtility_Taxonomy.php:173
+#, php-format
+msgid "View %s"
+msgstr "この%sを確認"
+
+#: WP_CustomUtility_PostType_Object.php:289 WP_CustomUtility_Taxonomy.php:167
+#, php-format
+msgid "Search %s"
+msgstr "%sを検索"
+
+#: WP_CustomUtility_PostType_Object.php:290
+#, php-format
+msgid "No %ss found."
+msgstr "%sがありません。"
+
+#: WP_CustomUtility_PostType_Object.php:292
+#, php-format
+msgid "No %ss found in trash."
+msgstr "ゴミ箱に%sはありません."
+
+#: WP_CustomUtility_PostType_Object.php:295
+msgid "Parent Page"
+msgstr "親ページ"
+
+#: WP_CustomUtility_PostType_Object.php:507
+#, php-format
+msgid "Recent %s"
+msgstr "最近の %s"
+
+#: WP_CustomUtility_PostType_Object.php:528
+#, php-format
+msgid "List %s"
+msgstr "%s 一覧"
+
+#: WP_CustomUtility_Taxonomy.php:134
+msgid "None"
+msgstr "なし"
+
+#: WP_CustomUtility_Taxonomy.php:155
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: WP_CustomUtility_Taxonomy.php:155
+msgid "Tags"
+msgstr "タグ"
+
+#: WP_CustomUtility_Taxonomy.php:156
+msgid "Category"
+msgstr "カテゴリー"
+
+#: WP_CustomUtility_Taxonomy.php:156
+msgid "Tag"
+msgstr "タグ"
+
+#: WP_CustomUtility_Taxonomy.php:168
+#, php-format
+msgid "Popular %s"
+msgstr "よく使う %s"
+
+#: WP_CustomUtility_Taxonomy.php:169
+#, php-format
+msgid "All %s"
+msgstr "全ての %s"
+
+#: WP_CustomUtility_Taxonomy.php:170
+#, php-format
+msgid "Parent %s"
+msgstr "親%s"
+
+#: WP_CustomUtility_Taxonomy.php:171
+#, php-format
+msgid "Parent %s:"
+msgstr "親%s:"
+
+#: WP_CustomUtility_Taxonomy.php:174
+#, php-format
+msgid "Update %s"
+msgstr "%sを更新"
+
+#: WP_CustomUtility_Taxonomy.php:177
+#, php-format
+msgid "Separate %ss with commas"
+msgstr "%sをカンマ区切りにする"
+
+#: WP_CustomUtility_Taxonomy.php:178
+#, php-format
+msgid "Add or remove %ss"
+msgstr "%sを追加または削除"
+
+#: WP_CustomUtility_Taxonomy.php:179
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "よく使う%s"
+
+#: WP_CustomUtility_Taxonomy.php:352
+#, php-format
+msgid "Default %2$s term for %1$s"
+msgstr "%1$sの%2$s初期設定"
+
+#: WP_CustomUtility_Taxonomy.php:376
+msgid "(Do no set default term)"
+msgstr "（設定しない）"
+
+#: WP_CustomUtility_Taxonomy.php:384
+#, php-format
+msgid "%s is not registered."
+msgstr "%sが登録されていません。"
+
+#~ msgid "Shortened Site Name"
+#~ msgstr "短縮サイト名"
+
+#~ msgid "Custom Functions Settings"
+#~ msgstr "カスタム機能の設定"
+
+#~ msgid "Saved Custom Functions settings."
+#~ msgstr "設定を保存しました。"
+
+#~ msgid "Refreshed Styled Sizes from style.css."
+#~ msgstr "style.cssから画像生成用サイズを読み込みました。"
+
+#~ msgid "You do not have permissions to access this page."
+#~ msgstr "このページにアクセスする権限がありません。"
+
+#~ msgid "Site Settings"
+#~ msgstr "Webサイトの設定"
+
+#~ msgid "Save Options"
+#~ msgstr "オプションを保存"
+
+#~ msgid "Styled Size for Intermediate Image Sizes"
+#~ msgstr "スタイルシートから画像生成用サイズ"
+
+#~ msgid "Refresh Sizes from style.css"
+#~ msgstr "style.cssから画像生成用サイズを読み込む"
+
+#~ msgid "Custom Post Type Archives"
+#~ msgstr "カスタム投稿タイプのアーカイブ"
+
+#~ msgid "Archive"
+#~ msgstr "アーカイブ"
+
+#~ msgid "Add to Menu"
+#~ msgstr "メニューに追加"
+
+#~ msgid "Generate META tag"
+#~ msgstr "METAタグを出力する"
+
+#~ msgid "Use root relative URL path instead of full URL"
+#~ msgstr "完全URLの代わりに絶対URLを使用する"
+
+#~ msgid "Admin Page Language"
+#~ msgstr "管理画面の言語"
+
+#~ msgid "Google Site Verification Code"
+#~ msgstr "Googleサイト確認コード"
+
+#~ msgid "Bing Site Verification Code"
+#~ msgstr "Bingサイト確認コード"
+
+#~ msgid "JQuery-UI Theme"
+#~ msgstr "JQuery-UI テーマ"
+
+#~ msgid "Site Thumbnail"
+#~ msgstr "サイトサムネール"
+
+#~ msgid "Site Banner"
+#~ msgstr "サイトバナー"
+
+#~ msgid "Site Banner 2"
+#~ msgstr "サイトバナー2"
+
+#~ msgid "URL format"
+#~ msgstr "URL形式"
+
+#~ msgid "Timezone Settings (in PHP)"
+#~ msgstr "時間帯設定（PHP内）"
+
+#~ msgid "Upload Image Size Limit (Longer Side in Pixels)"
+#~ msgstr "アップロード画像の大きさ制限（長辺ピクセル）"
+
+#~ msgid "Google reCAPTCHA API key"
+#~ msgstr "Google reCAPTCHA APIキー"
+
+#~ msgid "Google reCAPTCHA Secret key"
+#~ msgstr "Google reCAPTCHA シークレットキー"
+
+#~ msgid "Pages"
+#~ msgstr "ページ"
+
+#~ msgid "Edit Archive Page Parts"
+#~ msgstr "アーカイブページの要素を編集"
+
+#~ msgid "Archive Parts"
+#~ msgstr "アーカイブパーツ"
+
+#~ msgid "Not Found"
+#~ msgstr "見つかりませんでした"
+
+#~ msgid "Search Results"
+#~ msgstr "検索結果"
+
+#, php-format
+#~ msgid "Page %s"
+#~ msgstr "%sページ"
+
+#~ msgid "Author"
+#~ msgstr "執筆者"
+
+#, php-format
+#~ msgid "Please fill the required field (%s)."
+#~ msgstr "%s の項目は必須項目です。入力をお願いします。"
+
+#~ msgid "Schedule"
+#~ msgstr "スケジュール"
+
+#~ msgid "Scheduled Event"
+#~ msgstr "イベント"
+
+#~ msgid "Event Information"
+#~ msgstr "イベント情報"
+
+#~ msgid "See Details"
+#~ msgstr "詳細を見る"
+
+#~ msgid "Edit"
+#~ msgstr "編集"
+
+#~ msgid "Event Title"
+#~ msgstr "イベント名"
+
+#~ msgid "Date"
+#~ msgstr "日付"
+
+#~ msgid "Start Time"
+#~ msgstr "開始時刻"
+
+#~ msgid "End Time"
+#~ msgstr "終了時刻"
+
+#~ msgid "Media Category"
+#~ msgstr "メディアカテゴリー"
+
+#~ msgid "The default media category"
+#~ msgstr "デフォルトのメディアカテゴリー"
+
+#~ msgid "Most Used"
+#~ msgstr "よく使うもの"
+
+#, php-format
+#~ msgid "+ %s"
+#~ msgstr "+ %s"
+
+#~ msgid "Aries"
+#~ msgstr "おひつじ座"
+
+#~ msgid "Taurus"
+#~ msgstr "おうし座"
+
+#~ msgid "Gemini"
+#~ msgstr "ふたご座"
+
+#~ msgid "Cancer"
+#~ msgstr "かに座"
+
+#~ msgid "Leo"
+#~ msgstr "しし座"
+
+#~ msgid "Virgo"
+#~ msgstr "おとめ座"
+
+#~ msgid "Libra"
+#~ msgstr "てんぴん座"
+
+#~ msgid "Scorpio"
+#~ msgstr "さそり座"
+
+#~ msgid "Sagittarius"
+#~ msgstr "いて座"
+
+#~ msgid "Capricorn"
+#~ msgstr "やぎ座"
+
+#~ msgid "Aquarius"
+#~ msgstr "みずがめ座"
+
+#~ msgid "Pisces"
+#~ msgstr "うお座"
+
+#~ msgid "ARIES"
+#~ msgstr "牡羊座"
+
+#~ msgid "TAURUS"
+#~ msgstr "牡牛座"
+
+#~ msgid "GEMINI"
+#~ msgstr "双子座"
+
+#~ msgid "CANCER"
+#~ msgstr "蟹座"
+
+#~ msgid "LEO"
+#~ msgstr "獅子座"
+
+#~ msgid "VIRGO"
+#~ msgstr "乙女座"
+
+#~ msgid "LIBRA"
+#~ msgstr "天秤座"
+
+#~ msgid "SCORPIO"
+#~ msgstr "蠍座"
+
+#~ msgid "SAGITTARIUS"
+#~ msgstr "射手座"
+
+#~ msgid "CAPRICORN"
+#~ msgstr "山羊座"
+
+#~ msgid "AQUARIUS"
+#~ msgstr "水瓶座"
+
+#~ msgid "PISCES"
+#~ msgstr "魚座"
+
+#~ msgid "A"
+#~ msgstr "A"
+
+#~ msgid "B"
+#~ msgstr "B"
+
+#~ msgid "O"
+#~ msgstr "O"
+
+#~ msgid "AB"
+#~ msgstr "AB"
+
+#~ msgid "Group A"
+#~ msgstr "A型"
+
+#~ msgid "Group B"
+#~ msgstr "B型"
+
+#~ msgid "Group O"
+#~ msgstr "O型"
+
+#~ msgid "Group AB"
+#~ msgstr "AB型"
+
+#~ msgid "Rh+"
+#~ msgstr "Rh+"
+
+#~ msgid "Rh-"
+#~ msgstr "Rh-"
+
+#~ msgid "January"
+#~ msgstr "1月"
+
+#~ msgid "February"
+#~ msgstr "2月"
+
+#~ msgid "March"
+#~ msgstr "3月"
+
+#~ msgid "April"
+#~ msgstr "4月"
+
+#~ msgid "May"
+#~ msgstr "5月"
+
+#~ msgid "June"
+#~ msgstr "6月"
+
+#~ msgid "July"
+#~ msgstr "7月"
+
+#~ msgid "August"
+#~ msgstr "8月"
+
+#~ msgid "September"
+#~ msgstr "9月"
+
+#~ msgid "October"
+#~ msgstr "10月"
+
+#~ msgid "November"
+#~ msgstr "11月"
+
+#~ msgid "December"
+#~ msgstr "12月"
+
+#~ msgid "JANUARY"
+#~ msgstr "睦月"
+
+#~ msgid "FEBRUARY"
+#~ msgstr "如月"
+
+#~ msgid "MARCH"
+#~ msgstr "弥生"
+
+#~ msgid "APRIL"
+#~ msgstr "卯月"
+
+#~ msgid "MAY"
+#~ msgstr "皐月"
+
+#~ msgid "JUNE"
+#~ msgstr "水無月"
+
+#~ msgid "JULY"
+#~ msgstr "文月"
+
+#~ msgid "AUGUST"
+#~ msgstr "葉月"
+
+#~ msgid "SEPTEMBER"
+#~ msgstr "長月"
+
+#~ msgid "OCTOBER"
+#~ msgstr "神無月"
+
+#~ msgid "NOVEMBER"
+#~ msgstr "霜月"
+
+#~ msgid "DECEMBER"
+#~ msgstr "師走"
+
+#~ msgid "Jan"
+#~ msgstr "1"
+
+#~ msgid "Feb"
+#~ msgstr "2"
+
+#~ msgid "Mar"
+#~ msgstr "3"
+
+#~ msgid "Apr"
+#~ msgstr "4"
+
+#~ msgid "Jun"
+#~ msgstr "6"
+
+#~ msgid "Jul"
+#~ msgstr "7"
+
+#~ msgid "Aug"
+#~ msgstr "8"
+
+#~ msgid "Sep"
+#~ msgstr "9"
+
+#~ msgid "Oct"
+#~ msgstr "10"
+
+#~ msgid "Nov"
+#~ msgstr "11"
+
+#~ msgid "Dec"
+#~ msgstr "12"
+
+#~ msgid "JAN"
+#~ msgstr "むつき"
+
+#~ msgid "FEB"
+#~ msgstr "きさらぎ"
+
+#~ msgid "MAR"
+#~ msgstr "やよい"
+
+#~ msgid "APR"
+#~ msgstr "うづき"
+
+#~ msgid "JUN"
+#~ msgstr "みなづき"
+
+#~ msgid "JUL"
+#~ msgstr "ふみづき"
+
+#~ msgid "AUG"
+#~ msgstr "はづき"
+
+#~ msgid "SEP"
+#~ msgstr "ながつき"
+
+#~ msgid "OCT"
+#~ msgstr "みなづき"
+
+#~ msgid "NOV"
+#~ msgstr "しもつき"
+
+#~ msgid "DEC"
+#~ msgstr "しわす"
+
+#~ msgid "Sunday"
+#~ msgstr "日曜日"
+
+#~ msgid "Monday"
+#~ msgstr "月曜日"
+
+#~ msgid "Tuesday"
+#~ msgstr "火曜日"
+
+#~ msgid "Wednesday"
+#~ msgstr "水曜日"
+
+#~ msgid "Thursday"
+#~ msgstr "木曜日"
+
+#~ msgid "Friday"
+#~ msgstr "金曜日"
+
+#~ msgid "Saturday"
+#~ msgstr "土曜日"
+
+#~ msgid "Sun"
+#~ msgstr "日"
+
+#~ msgid "Mon"
+#~ msgstr "月"
+
+#~ msgid "Tue"
+#~ msgstr "火"
+
+#~ msgid "Wed"
+#~ msgstr "水"
+
+#~ msgid "Thu"
+#~ msgstr "木"
+
+#~ msgid "Fri"
+#~ msgstr "金"
+
+#~ msgid "Sat"
+#~ msgstr "土"
+
+#, fuzzy
+#~ msgid "SUNDAY"
+#~ msgstr "日曜日"
+
+#, fuzzy
+#~ msgid "MONDAY"
+#~ msgstr "月曜日"
+
+#, fuzzy
+#~ msgid "TUESDAY"
+#~ msgstr "火曜日"
+
+#, fuzzy
+#~ msgid "WEDNESDAY"
+#~ msgstr "水曜日"
+
+#, fuzzy
+#~ msgid "THURSDAY"
+#~ msgstr "木曜日"
+
+#, fuzzy
+#~ msgid "FRIDAY"
+#~ msgstr "金曜日"
+
+#, fuzzy
+#~ msgid "SATURDAY"
+#~ msgstr "土曜日"
+
+#~ msgid "SUN"
+#~ msgstr "（日）"
+
+#~ msgid "MON"
+#~ msgstr "（月）"
+
+#~ msgid "TUE"
+#~ msgstr "（火）"
+
+#~ msgid "WED"
+#~ msgstr "（水）"
+
+#~ msgid "THU"
+#~ msgstr "（木）"
+
+#~ msgid "FRI"
+#~ msgstr "（金）"
+
+#~ msgid "SAT"
+#~ msgstr "（土）"
+
+#~ msgid "Edit Post Type Page Header"
+#~ msgstr "ページヘッダを編集"
+
+#~ msgid "Page Headers"
+#~ msgstr "ページヘッダ"
+
+#, php-format
+#~ msgid "%s in this %s"
+#~ msgstr "この%2$sの%1$s"
+
+#, php-format
+#~ msgid "%s in the same %s"
+#~ msgstr "同じ%2$sの%1$s"
+
+#, php-format
+#~ msgid "Relation with the same definition (Parent: %s; Child: %s) already exists. Only one pair of the same Post Types is allowed. Exitting."
+#~ msgstr "同じ親子定義のRelationオブジェクトが定義されています（親：%s、子：%s）。親子の組が同じRelationオブジェクトは、1組のみしか定義できません。処理を終了します。"
+
+#, php-format
+#~ msgid "Relation with the same child (%s) already exists. Use \"multiple\" => TRUE to automatically expand the database key or specify a key when generate an instance passing \"parent_id_key\" => [something_you_want] in the argument."
+#~ msgstr "同じ『子』（%s）を持つRelationインスタンスが既に定義されています。インスタンスの生成時に \"multiple\" => TRUE を指定すると自動的にデータベースキーを拡張できます。または、\"parent_id_key\" => \"好きな文字列\" を指定することでもデータベースキーを定義できます。"
+
+#, php-format
+#~ msgid "Edit %s of this %s"
+#~ msgstr "この%2$sの%1$sを編集"
+
+#~ msgid "View"
+#~ msgstr "表示"
+
+#~ msgid "Default Location"
+#~ msgstr "規定の場所"
+
+#~ msgid "Relocate Upload Settings"
+#~ msgstr "アップロードファイルの移動設定"
+
+#~ msgid "[0] Relocation Failed: File already exists in destination directory."
+#~ msgstr "[0] アップロードファイルの移動に失敗しました。同じ名前のファイルが既に存在します。"
+
+#~ msgid "[2] Relocating Files..."
+#~ msgstr "[2] アップロードファイルを移動しています…"
+
+#, php-format
+#~ msgid "[1] File Relocated: %s"
+#~ msgstr "[1] ファイルを移動しました（%s）"
+
+#~ msgid "Moving..."
+#~ msgstr "移動しています…"
+
+#~ msgid "Relocation Succeeded."
+#~ msgstr "ファイルを移動しました。"
+
+#~ msgid "Relocation Failed."
+#~ msgstr "ファイルの移動に失敗しました。"
+
+#~ msgid "All Folders"
+#~ msgstr "全てのフォルダ"
+
+#~ msgid "Relocate Upload Folder"
+#~ msgstr "アップロードファイルの移動"
+
+#~ msgid "Upload Locations"
+#~ msgstr "アップロード場所一覧"
+
+#~ msgid "Relocate Upload - Locations"
+#~ msgstr "アップロードファイルの移動：登録済の場所一覧"
+
+#, php-format
+#~ msgid "Paths relative to the blog's root directory: %s"
+#~ msgstr "サイトのルートディレクトリ（%s）からの相対パス"
+
+#~ msgid "Remove Location"
+#~ msgstr "場所を削除"
+
+#~ msgid "New Location"
+#~ msgstr "新しい場所"
+
+#~ msgid "Update"
+#~ msgstr "更新"
+
+#~ msgid "Date and Time"
+#~ msgstr "日付と時間"
+
+#~ msgid "Open Time"
+#~ msgstr "開始時刻"
+
+#~ msgid "Site Data"
+#~ msgstr "サイトデータ"
+
+#~ msgid "Site Data Item"
+#~ msgstr "サイトデータ項目"
+
+#~ msgid "Edit Site Data"
+#~ msgstr "サイトデータを編集"
+
+#~ msgid "Please select a value."
+#~ msgstr "選択してください"
+
+#~ msgid "Search"
+#~ msgstr "検索"
+
+#~ msgid "Refine Search"
+#~ msgstr "絞り込み検索"
+
+#~ msgid "Return to search top."
+#~ msgstr "検索トップへ戻る"
+
+#~ msgid "Updated Theme Image information on database."
+#~ msgstr "テーマの画像の情報を更新してデータベースに保存しました。"
+
+#~ msgid "Theme Image"
+#~ msgstr "テーマの画像"
+
+#~ msgid "Refresh image info"
+#~ msgstr "テーマの画像の情報を最新にする"
+
+#, php-format
+#~ msgid "See details about %s"
+#~ msgstr "%sの詳細を見る"
+
+#, php-format
+#~ msgid "Zip: %s"
+#~ msgstr "〒%s"
+
+#, php-format
+#~ msgid "Tel. %s"
+#~ msgstr "TEL %s"
+
+#, php-format
+#~ msgid "Fax. %s"
+#~ msgstr "FAX %s"
+
+#, php-format
+#~ msgid "E-mail: %s"
+#~ msgstr "E-mail: %s"
+
+#, php-format
+#~ msgid "©%s"
+#~ msgstr "Ⓒ%s"
+
+#~ msgid "Post Settings, Scripts and Styles"
+#~ msgstr "投稿の設定／スクリプトとスタイル"
+
+#~ msgid "CSS Files"
+#~ msgstr "CSSファイル"
+
+#~ msgid "CSS Codes"
+#~ msgstr "CSSコード"
+
+#~ msgid "JQuery specific code"
+#~ msgstr "jQueryを利用するコード"
+
+#~ msgid "Registered JavaScript Libraries"
+#~ msgstr "登録済みのJavaScriptライブラリ"
+
+#~ msgid "JavaScript Files"
+#~ msgstr "JavaScriptファイル"
+
+#~ msgid "JavaScript Codes"
+#~ msgstr "JavaScriptコード"
+
+#~ msgid "Do not use Post Excerpt"
+#~ msgstr "抜粋を使用しない"
+
+#~ msgid "Post Excerpt Length"
+#~ msgstr "抜粋の文字数"
+
+#~ msgid "Registered CSS Files"
+#~ msgstr "登録済のCSSファイル"
+
+#~ msgid "No Post Thumbnail"
+#~ msgstr "アイキャッチ画像を使用しない"
+
+#~ msgid "Post Thumbnail Size"
+#~ msgstr "投稿サムネイルのサイズ"
+
+#~ msgid "Alternative Post Content Fields"
+#~ msgstr "代替のコンテンツ"
+
+#~ msgid "Specify H1 element content"
+#~ msgstr "H1要素の内容を指定する"
+
+#~ msgid "Title for Breadcrumb"
+#~ msgstr "パンくずリスト用タイトル"
+
+#~ msgid "Truncate Title for Breadcrumb"
+#~ msgstr "パンくずリスト用にタイトルを短くする（文字数を指定）"
+
+#~ msgid "Alternate Post Thumbnail"
+#~ msgstr "代替のアイキャッチ画像"
+
+#~ msgid "Alternative Post Excerpt"
+#~ msgstr "抜粋"
+
+#~ msgid "Post Meta Contents"
+#~ msgstr "投稿のメタコンテンツ"
+
+#~ msgid "Content After Header"
+#~ msgstr "ページヘッダーの直後の内容"
+
+#~ msgid "Content After \"Content Header\" Starts"
+#~ msgstr "\"Content Header\" 冒頭の内容"
+
+#~ msgid "Content At \"Content Header\" Ends"
+#~ msgstr "\"Content Header\" 終了部分の内容"
+
+#~ msgid "Utilities"
+#~ msgstr "ユーティリティ"
+
+#~ msgid "Color Picker"
+#~ msgstr "カラーピッカー"
+
+#, php-format
+#~ msgid " (%d&times;%d)"
+#~ msgstr "(%d&times;%d)"
+
+#~ msgid "says:"
+#~ msgstr "さん："
+
+#~ msgid "Your comment is awaiting moderation."
+#~ msgstr "コメントは認証待ちです。"
+
+#, php-format
+#~ msgid "%1$s at %2$s"
+#~ msgstr "%1$s - %2$s"
+
+#~ msgid "This post is password protected. Enter the password to view any comments."
+#~ msgstr "コメントを見るにはパスワードを入力してください。"
+
+#~ msgid "Comments are closed."
+#~ msgstr "現在コメントは受け付けておりません。"
+
+#, php-format
+#~ msgid "%1$s&larr;%2$s Older Comments"
+#~ msgstr "%1$s&larr;%2$s 以前のコメント"
+
+#, php-format
+#~ msgid "Newer Comments %1$s&larr;%2$s"
+#~ msgstr "次のコメント %1$s&larr;%2$s"
+
+#, php-format
+#~ msgid "%1$s / %2$s Pages"
+#~ msgstr "%1$s / %2$s ページ"
+
+#~ msgid "Next page"
+#~ msgstr "次のページ"
+
+#~ msgid "Previous page"
+#~ msgstr "前のページ"
+
+#~ msgid "Bookmarks"
+#~ msgstr "ブックマーク"
+
+#~ msgid "Invalid taxonomy"
+#~ msgstr "不正なタクソノミー"
+
+#, php-format
+#~ msgid "View all posts in %s"
+#~ msgstr "%s に含まれる投稿を全て表示"
+
+#~ msgid "Content Before WP Title"
+#~ msgstr "WP TItle の前の内容"
+
+#~ msgid "Content After WP Title"
+#~ msgstr "WP Title の後の内容"
+
+#~ msgid "Post Header"
+#~ msgstr "投稿のヘッダ"
+
+#~ msgid "Post Meta Text Above Content"
+#~ msgstr "メタコンテンツ"
+
+#, fuzzy
+#~ msgid "Relocate Upload Settings - Locations"
+#~ msgstr "アップロードファイルの移動：登録済の場所一覧"
+
+#~ msgid "JavaScript Library Directory (Absolute URI Path)"
+#~ msgstr "JavaScriptライブラリの絶対URIパス"
+
+#~ msgid "Common CSS Files Directory (Absolute URI Path)"
+#~ msgstr "CSSファイルライブラリの絶対URIパス"
+
+#~ msgid "Common Image Directory (Absolute URI Path)"
+#~ msgstr "画像ライブラリの絶対URIパス"
+
+#~ msgid "Nubmer of Alternate Post Thumbnails"
+#~ msgstr "代替アイキャッチ画像の数"
+
+#~ msgid "Use URL path instead of full URL"
+#~ msgstr "完全URLの代わりに"
+
+#, fuzzy
+#~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+#~ msgstr "%s さんより："
+
+#~ msgid "Site Options"
+#~ msgstr "サイトのオプション"
+
+#~ msgid "Option"
+#~ msgstr "オプション"
+
+#~ msgid "Custom Functions Options"
+#~ msgstr "Custom Functions オプション"
+
+#~ msgid "Media Categories"
+#~ msgstr "メディアカテゴリー"
+
+#, fuzzy
+#~ msgid "Castor"
+#~ msgstr "カテゴリー"
+
+#~ msgid "CASTOR"
+#~ msgstr "蟹座"
+
+#~ msgid "Read more..."
+#~ msgstr "もっと読む…"
+
+#~ msgid "Add New "
+#~ msgstr "追加"

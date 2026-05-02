@@ -1,0 +1,51 @@
+%absolute_xy_center {
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ -webkit-transform: translate(-50%, -50%);
+ 
+}
+%flex {
+ display: flex;
+ justify-content: space-between;
+}
+%flex_flow {
+ @extend %flex;
+ flex-wrap: wrap;
+}
+%flex_columns {
+ @extend %flex;
+ flex-wrap: nowrap;
+}
+%center_box {
+ margin-right: auto;
+ margin-left: auto;
+}
+%pseudo_content {
+ content: "";
+}
+%block {
+ display: block;
+}
+%inline_block {
+ display: inline-block;
+}
+%pseudo_block {
+ @extend %pseudo_content;
+ @extend %block;
+}
+%clearfix_entity {
+ @extend %pseudo_content;
+ display: table;
+ clear: both;
+}
+
+@mixin form_table_smallscreen() {
+ tr {
+  display: block;
+  th, td {
+   display: block;
+  }
+ }
+}

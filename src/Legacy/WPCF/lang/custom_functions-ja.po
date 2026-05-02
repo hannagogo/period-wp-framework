@@ -1,0 +1,1258 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: custom_functions\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-14 15:37+0900\n"
+"PO-Revision-Date: 2017-06-14 15:37+0900\n"
+"Last-Translator: Omi <omi@design-arts.jp>\n"
+"Language-Team: Omi Kikuchi\n"
+"Language: ja_JP\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 2.0.2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: js\n"
+"X-Poedit-SearchPathExcluded-1: css\n"
+"X-Poedit-SearchPathExcluded-2: Documents\n"
+"X-Poedit-SearchPathExcluded-3: lib\n"
+
+#: WPCF.php:86 WPCF.php:902
+msgid "Shortened Site Name"
+msgstr "短縮サイト名"
+
+#: WPCF.php:412 WPCF.php:413 WPCF.php:504
+msgid "Custom Functions Settings"
+msgstr "カスタム機能の設定"
+
+#: WPCF.php:458
+msgid "Saved Custom Functions settings."
+msgstr "設定を保存しました。"
+
+#: WPCF.php:463
+msgid "Refreshed Styled Sizes from style.css."
+msgstr "style.cssから画像生成用サイズを読み込みました。"
+
+#: WPCF.php:487
+msgid "You do not have permissions to access this page."
+msgstr "このページにアクセスする権限がありません。"
+
+#: WPCF.php:492
+msgid "Site Settings"
+msgstr "Webサイトの設定"
+
+#: WPCF.php:499 WPCF.php:528
+msgid "Save Options"
+msgstr "オプションを保存"
+
+#: WPCF.php:542
+msgid "Styled Size for Intermediate Image Sizes"
+msgstr "スタイルシートから画像生成用サイズ"
+
+#: WPCF.php:546
+msgid "Refresh Sizes from style.css"
+msgstr "style.cssから画像生成用サイズを読み込む"
+
+#: WPCF.php:557
+msgid "Custom Post Type Archives"
+msgstr "カスタム投稿タイプのアーカイブ"
+
+#: WPCF.php:582 class.BreadCrumb.php:18
+msgid "Archive"
+msgstr "アーカイブ"
+
+#: WPCF.php:597
+msgid "Add to Menu"
+msgstr "メニューに追加"
+
+#: WPCF.php:704
+msgid "Generate META tag"
+msgstr "METAタグを出力する"
+
+#: WPCF.php:744
+msgid "Use root relative URL path instead of full URL"
+msgstr "完全URLの代わりに絶対URLを使用する"
+
+#: WPCF.php:895
+msgid "Admin Page Language"
+msgstr "管理画面の言語"
+
+#: WPCF.php:896
+msgid "Google Site Verification Code"
+msgstr "Googleサイト確認コード"
+
+#: WPCF.php:897
+msgid "Bing Site Verification Code"
+msgstr "Bingサイト確認コード"
+
+#: WPCF.php:898
+msgid "JQuery-UI Theme"
+msgstr "JQuery-UI テーマ"
+
+#: WPCF.php:899
+msgid "Site Thumbnail"
+msgstr "サイトサムネール"
+
+#: WPCF.php:900
+msgid "Site Banner"
+msgstr "サイトバナー"
+
+#: WPCF.php:901
+msgid "Site Banner 2"
+msgstr "サイトバナー2"
+
+#: WPCF.php:903
+msgid "URL format"
+msgstr "URL形式"
+
+#: WPCF.php:904
+msgid "Timezone Settings (in PHP)"
+msgstr "時間帯設定（PHP内）"
+
+#: WPCF.php:905
+msgid "Upload Image Size Limit (Longer Side in Pixels)"
+msgstr "アップロード画像の大きさ制限（長辺ピクセル）"
+
+#: WPCF.php:906
+msgid "Google reCAPTCHA API key"
+msgstr "Google reCAPTCHA APIキー"
+
+#: WPCF.php:907
+msgid "Google reCAPTCHA Secret key"
+msgstr "Google reCAPTCHA シークレットキー"
+
+#: WPCF.php:1053 class.PostType.php:294 class.PostType.php:461
+#: class.Taxonomy.php:164
+#, php-format
+msgid "Edit %s"
+msgstr "%sを編集"
+
+#: WPCF.php:1053
+msgid "Pages"
+msgstr "ページ"
+
+#: class.ArchivePageParts.php:17 class.ArchivePageParts.php:34
+msgid "Edit Archive Page Parts"
+msgstr "アーカイブページの要素を編集"
+
+#: class.ArchivePageParts.php:18
+msgid "Archive Parts"
+msgstr "アーカイブパーツ"
+
+#: class.BreadCrumb.php:19
+msgid "Not Found"
+msgstr "見つかりませんでした"
+
+#: class.BreadCrumb.php:20
+msgid "Search Results"
+msgstr "検索結果"
+
+#: class.BreadCrumb.php:24
+#, php-format
+msgid "Page %s"
+msgstr "%sページ"
+
+#: class.BreadCrumb.php:122 includes/wpcf-content.php:721
+msgid "Author"
+msgstr "執筆者"
+
+#: class.CustomCommentField.php:45
+#, php-format
+msgid "Please fill the required field (%s)."
+msgstr "%s の項目は必須項目です。入力をお願いします。"
+
+#: class.EventSchedule.php:58 class.ScheduleCalendar.php:94
+msgid "Schedule"
+msgstr "スケジュール"
+
+#: class.EventSchedule.php:59 class.ScheduleCalendar.php:95
+msgid "Scheduled Event"
+msgstr "イベント"
+
+#: class.EventSchedule.php:130
+msgid "Event Information"
+msgstr "イベント情報"
+
+#: class.EventSchedule.php:368 class.EventSchedule.php:868
+#: class.ScheduleCalendar.php:248 class.ScheduleCalendar.php:465
+msgid "See Details"
+msgstr "詳細を見る"
+
+#: class.EventSchedule.php:878 class.EventSchedule.php:1026
+#: class.Relation.php:263 class.ScheduleCalendar.php:475 class.SiteData.php:101
+#: includes/wpcf-comment.php:31 includes/wpcf-content.php:728
+msgid "Edit"
+msgstr "編集"
+
+#: class.EventSchedule.php:1081
+msgid "Event Title"
+msgstr "イベント名"
+
+#: class.EventSchedule.php:1086 class.ScheduleCalendar.php:591
+msgid "Date"
+msgstr "日付"
+
+#: class.EventSchedule.php:1125 class.ScheduleCalendar.php:612
+msgid "Start Time"
+msgstr "開始時刻"
+
+#: class.EventSchedule.php:1133 class.ScheduleCalendar.php:620
+msgid "End Time"
+msgstr "終了時刻"
+
+#: class.MediaCategory.php:26
+msgid "Media Category"
+msgstr "メディアカテゴリー"
+
+#: class.MediaCategory.php:44
+msgid "The default media category"
+msgstr "デフォルトのメディアカテゴリー"
+
+#: class.MediaCategory.php:117
+msgid "Most Used"
+msgstr "よく使うもの"
+
+#: class.MediaCategory.php:155
+#, php-format
+msgid "+ %s"
+msgstr "+ %s"
+
+#: class.MetaBox.php:300
+msgid "Are you sure you want to delete the field?"
+msgstr "入力欄を削除してもいいですか？"
+
+#: class.MetaBox.php:301
+msgid "Delete Field Confirmation"
+msgstr "入力欄削除の確認"
+
+#: class.MetaBox.php:302
+msgid "Are you sure you want to delete the media field?"
+msgstr "メディア（画像）入力欄を削除してもいいですか？"
+
+#: class.MetaBox.php:303
+msgid "Delete Media Field Confirmation"
+msgstr "メディア（画像）入力欄削除の確認"
+
+#: class.MetaBox.php:304
+msgid "Delete"
+msgstr "削除"
+
+#: class.MetaBox.php:305 class.MetaBox.php:694
+msgid "Cancel"
+msgstr "キャンセル"
+
+#: class.MetaBox.php:686
+msgid "Select/Upload Image"
+msgstr "画像を選択／アップロード"
+
+#: class.MetaBox.php:687 class.MetaBox.php:693
+msgid "Clear Image"
+msgstr "画像を削除"
+
+#: class.MetaBox.php:691
+msgid "Are you sure you want to delete the image?"
+msgstr "画像を削除してもいいですか？"
+
+#: class.MetaBox.php:692
+msgid "Delete Image Confirmation"
+msgstr "画像削除の確認"
+
+#: class.MetaBox.php:822
+msgid "Error occured while requesting image by ajax."
+msgstr "Ajaxで画像を取得する際にエラーが発生しました。"
+
+#: class.MetaBox.php:833
+msgid "Add Media"
+msgstr "メディア追加"
+
+#: class.MetaBox.php:843
+msgid "Finish Upload"
+msgstr "アップロード終了"
+
+#: class.MetaBox.php:1112
+msgid "Aries"
+msgstr "おひつじ座"
+
+#: class.MetaBox.php:1112
+msgid "Taurus"
+msgstr "おうし座"
+
+#: class.MetaBox.php:1112
+msgid "Gemini"
+msgstr "ふたご座"
+
+#: class.MetaBox.php:1112
+msgid "Cancer"
+msgstr "かに座"
+
+#: class.MetaBox.php:1112
+msgid "Leo"
+msgstr "しし座"
+
+#: class.MetaBox.php:1112
+msgid "Virgo"
+msgstr "おとめ座"
+
+#: class.MetaBox.php:1112
+msgid "Libra"
+msgstr "てんぴん座"
+
+#: class.MetaBox.php:1112
+msgid "Scorpio"
+msgstr "さそり座"
+
+#: class.MetaBox.php:1112
+msgid "Sagittarius"
+msgstr "いて座"
+
+#: class.MetaBox.php:1112
+msgid "Capricorn"
+msgstr "やぎ座"
+
+#: class.MetaBox.php:1112
+msgid "Aquarius"
+msgstr "みずがめ座"
+
+#: class.MetaBox.php:1112
+msgid "Pisces"
+msgstr "うお座"
+
+#: class.MetaBox.php:1113
+msgid "ARIES"
+msgstr "牡羊座"
+
+#: class.MetaBox.php:1113
+msgid "TAURUS"
+msgstr "牡牛座"
+
+#: class.MetaBox.php:1113
+msgid "GEMINI"
+msgstr "双子座"
+
+#: class.MetaBox.php:1113
+msgid "CANCER"
+msgstr "蟹座"
+
+#: class.MetaBox.php:1113
+msgid "LEO"
+msgstr "獅子座"
+
+#: class.MetaBox.php:1113
+msgid "VIRGO"
+msgstr "乙女座"
+
+#: class.MetaBox.php:1113
+msgid "LIBRA"
+msgstr "天秤座"
+
+#: class.MetaBox.php:1113
+msgid "SCORPIO"
+msgstr "蠍座"
+
+#: class.MetaBox.php:1113
+msgid "SAGITTARIUS"
+msgstr "射手座"
+
+#: class.MetaBox.php:1113
+msgid "CAPRICORN"
+msgstr "山羊座"
+
+#: class.MetaBox.php:1113
+msgid "AQUARIUS"
+msgstr "水瓶座"
+
+#: class.MetaBox.php:1113
+msgid "PISCES"
+msgstr "魚座"
+
+#: class.MetaBox.php:1114
+msgid "A"
+msgstr "A"
+
+#: class.MetaBox.php:1114
+msgid "B"
+msgstr "B"
+
+#: class.MetaBox.php:1114
+msgid "O"
+msgstr "O"
+
+#: class.MetaBox.php:1114
+msgid "AB"
+msgstr "AB"
+
+#: class.MetaBox.php:1115
+msgid "Group A"
+msgstr "A型"
+
+#: class.MetaBox.php:1115
+msgid "Group B"
+msgstr "B型"
+
+#: class.MetaBox.php:1115
+msgid "Group O"
+msgstr "O型"
+
+#: class.MetaBox.php:1115
+msgid "Group AB"
+msgstr "AB型"
+
+#: class.MetaBox.php:1116
+msgid "Rh+"
+msgstr "Rh+"
+
+#: class.MetaBox.php:1116
+msgid "Rh-"
+msgstr "Rh-"
+
+#: class.MetaBox.php:1117
+msgid "January"
+msgstr "1月"
+
+#: class.MetaBox.php:1117
+msgid "February"
+msgstr "2月"
+
+#: class.MetaBox.php:1117
+msgid "March"
+msgstr "3月"
+
+#: class.MetaBox.php:1117
+msgid "April"
+msgstr "4月"
+
+#: class.MetaBox.php:1117 class.MetaBox.php:1119
+msgid "May"
+msgstr "5月"
+
+#: class.MetaBox.php:1117
+msgid "June"
+msgstr "6月"
+
+#: class.MetaBox.php:1117
+msgid "July"
+msgstr "7月"
+
+#: class.MetaBox.php:1117
+msgid "August"
+msgstr "8月"
+
+#: class.MetaBox.php:1117
+msgid "September"
+msgstr "9月"
+
+#: class.MetaBox.php:1117
+msgid "October"
+msgstr "10月"
+
+#: class.MetaBox.php:1117
+msgid "November"
+msgstr "11月"
+
+#: class.MetaBox.php:1117
+msgid "December"
+msgstr "12月"
+
+#: class.MetaBox.php:1118
+msgid "JANUARY"
+msgstr "睦月"
+
+#: class.MetaBox.php:1118
+msgid "FEBRUARY"
+msgstr "如月"
+
+#: class.MetaBox.php:1118
+msgid "MARCH"
+msgstr "弥生"
+
+#: class.MetaBox.php:1118
+msgid "APRIL"
+msgstr "卯月"
+
+#: class.MetaBox.php:1118 class.MetaBox.php:1120
+msgid "MAY"
+msgstr "皐月"
+
+#: class.MetaBox.php:1118
+msgid "JUNE"
+msgstr "水無月"
+
+#: class.MetaBox.php:1118
+msgid "JULY"
+msgstr "文月"
+
+#: class.MetaBox.php:1118
+msgid "AUGUST"
+msgstr "葉月"
+
+#: class.MetaBox.php:1118
+msgid "SEPTEMBER"
+msgstr "長月"
+
+#: class.MetaBox.php:1118
+msgid "OCTOBER"
+msgstr "神無月"
+
+#: class.MetaBox.php:1118
+msgid "NOVEMBER"
+msgstr "霜月"
+
+#: class.MetaBox.php:1118
+msgid "DECEMBER"
+msgstr "師走"
+
+#: class.MetaBox.php:1119
+msgid "Jan"
+msgstr "1"
+
+#: class.MetaBox.php:1119
+msgid "Feb"
+msgstr "2"
+
+#: class.MetaBox.php:1119
+msgid "Mar"
+msgstr "3"
+
+#: class.MetaBox.php:1119
+msgid "Apr"
+msgstr "4"
+
+#: class.MetaBox.php:1119
+msgid "Jun"
+msgstr "6"
+
+#: class.MetaBox.php:1119
+msgid "Jul"
+msgstr "7"
+
+#: class.MetaBox.php:1119
+msgid "Aug"
+msgstr "8"
+
+#: class.MetaBox.php:1119
+msgid "Sep"
+msgstr "9"
+
+#: class.MetaBox.php:1119
+msgid "Oct"
+msgstr "10"
+
+#: class.MetaBox.php:1119
+msgid "Nov"
+msgstr "11"
+
+#: class.MetaBox.php:1119
+msgid "Dec"
+msgstr "12"
+
+#: class.MetaBox.php:1120
+msgid "JAN"
+msgstr "むつき"
+
+#: class.MetaBox.php:1120
+msgid "FEB"
+msgstr "きさらぎ"
+
+#: class.MetaBox.php:1120
+msgid "MAR"
+msgstr "やよい"
+
+#: class.MetaBox.php:1120
+msgid "APR"
+msgstr "うづき"
+
+#: class.MetaBox.php:1120
+msgid "JUN"
+msgstr "みなづき"
+
+#: class.MetaBox.php:1120
+msgid "JUL"
+msgstr "ふみづき"
+
+#: class.MetaBox.php:1120
+msgid "AUG"
+msgstr "はづき"
+
+#: class.MetaBox.php:1120
+msgid "SEP"
+msgstr "ながつき"
+
+#: class.MetaBox.php:1120
+msgid "OCT"
+msgstr "みなづき"
+
+#: class.MetaBox.php:1120
+msgid "NOV"
+msgstr "しもつき"
+
+#: class.MetaBox.php:1120
+msgid "DEC"
+msgstr "しわす"
+
+#: class.MetaBox.php:1121
+msgid "Sunday"
+msgstr "日曜日"
+
+#: class.MetaBox.php:1121
+msgid "Monday"
+msgstr "月曜日"
+
+#: class.MetaBox.php:1121
+msgid "Tuesday"
+msgstr "火曜日"
+
+#: class.MetaBox.php:1121
+msgid "Wednesday"
+msgstr "水曜日"
+
+#: class.MetaBox.php:1121
+msgid "Thursday"
+msgstr "木曜日"
+
+#: class.MetaBox.php:1121
+msgid "Friday"
+msgstr "金曜日"
+
+#: class.MetaBox.php:1121
+msgid "Saturday"
+msgstr "土曜日"
+
+#: class.MetaBox.php:1122
+msgid "Sun"
+msgstr "日"
+
+#: class.MetaBox.php:1122
+msgid "Mon"
+msgstr "月"
+
+#: class.MetaBox.php:1122
+msgid "Tue"
+msgstr "火"
+
+#: class.MetaBox.php:1122
+msgid "Wed"
+msgstr "水"
+
+#: class.MetaBox.php:1122
+msgid "Thu"
+msgstr "木"
+
+#: class.MetaBox.php:1122
+msgid "Fri"
+msgstr "金"
+
+#: class.MetaBox.php:1122
+msgid "Sat"
+msgstr "土"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "SUNDAY"
+msgstr "日曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "MONDAY"
+msgstr "月曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "TUESDAY"
+msgstr "火曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "WEDNESDAY"
+msgstr "水曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "THURSDAY"
+msgstr "木曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "FRIDAY"
+msgstr "金曜日"
+
+#: class.MetaBox.php:1123
+#, fuzzy
+msgid "SATURDAY"
+msgstr "土曜日"
+
+#: class.MetaBox.php:1124
+msgid "SUN"
+msgstr "（日）"
+
+#: class.MetaBox.php:1124
+msgid "MON"
+msgstr "（月）"
+
+#: class.MetaBox.php:1124
+msgid "TUE"
+msgstr "（火）"
+
+#: class.MetaBox.php:1124
+msgid "WED"
+msgstr "（水）"
+
+#: class.MetaBox.php:1124
+msgid "THU"
+msgstr "（木）"
+
+#: class.MetaBox.php:1124
+msgid "FRI"
+msgstr "（金）"
+
+#: class.MetaBox.php:1124
+msgid "SAT"
+msgstr "（土）"
+
+#: class.PageHeader.php:17 class.PageHeader.php:34
+msgid "Edit Post Type Page Header"
+msgstr "ページヘッダを編集"
+
+#: class.PageHeader.php:18
+msgid "Page Headers"
+msgstr "ページヘッダ"
+
+#: class.PostType.php:155
+msgid "Featured Image"
+msgstr "アイキャッチ画像"
+
+#: class.PostType.php:288 class.PostType.php:293 class.Relation.php:180
+#: class.Relation.php:229 class.Taxonomy.php:167
+#, php-format
+msgid "Add New %s"
+msgstr "%sを追加"
+
+#: class.PostType.php:295 class.Taxonomy.php:168
+#, php-format
+msgid "New %s"
+msgstr "新規%s"
+
+#: class.PostType.php:296 class.Taxonomy.php:165
+#, php-format
+msgid "View %s"
+msgstr "この%sを確認"
+
+#: class.PostType.php:297 class.Taxonomy.php:159
+#, php-format
+msgid "Search %s"
+msgstr "%sを検索"
+
+#: class.PostType.php:298
+#, php-format
+msgid "No %ss found."
+msgstr "%sがありません。"
+
+#: class.PostType.php:300
+#, php-format
+msgid "No %ss found in trash."
+msgstr "ゴミ箱に%sはありません"
+
+#: class.PostType.php:303
+msgid "Parent Page"
+msgstr "親ページ"
+
+#: class.PostType.php:527
+#, php-format
+msgid "List %s"
+msgstr "%s 一覧"
+
+#: class.PostType.php:538
+#, php-format
+msgid "Recent %s"
+msgstr "最近の %s"
+
+#: class.Relation.php:57
+#, php-format
+msgid "%s in this %s"
+msgstr "この%2$sの%1$s"
+
+#: class.Relation.php:61
+#, php-format
+msgid "%s in the same %s"
+msgstr "同じ%2$sの%1$s"
+
+#: class.Relation.php:82
+#, php-format
+msgid ""
+"Relation with the same definition (Parent: %s; Child: %s) already exists. "
+"Only one pair of the same Post Types is allowed. Exitting."
+msgstr ""
+"同じ親子定義のRelationオブジェクトが定義されています（親：%s、子：%s）。親子"
+"の組が同じRelationオブジェクトは、1組のみしか定義できません。処理を終了しま"
+"す。"
+
+#: class.Relation.php:97
+#, php-format
+msgid ""
+"Relation with the same child (%s) already exists. Use \"multiple\" => TRUE "
+"to automatically expand the database key or specify a key when generate an "
+"instance passing \"parent_id_key\" => [something_you_want] in the argument."
+msgstr ""
+"同じ『子』（%s）を持つRelationインスタンスが既に定義されています。インスタン"
+"スの生成時に \"multiple\" => TRUE を指定すると自動的にデータベースキーを拡張"
+"できます。または、\"parent_id_key\" => \"好きな文字列\" を指定することでも"
+"データベースキーを定義できます。"
+
+#: class.Relation.php:238
+#, php-format
+msgid "Edit %s of this %s"
+msgstr "この%2$sの%1$sを編集"
+
+#: class.Relation.php:267
+msgid "View"
+msgstr "表示"
+
+#: class.RelocateUpload.php:21
+msgid "Default Location"
+msgstr "規定の場所"
+
+#: class.RelocateUpload.php:42 class.RelocateUpload.php:43
+#: class.RelocateUpload.php:268
+msgid "Relocate Upload Settings"
+msgstr "アップロードファイルの移動設定"
+
+#: class.RelocateUpload.php:73
+msgid "[0] Relocation Failed: File already exists in destination directory."
+msgstr ""
+"[0] アップロードファイルの移動に失敗しました。同じ名前のファイルが既に存在し"
+"ます。"
+
+#: class.RelocateUpload.php:76
+msgid "[2] Relocating Files..."
+msgstr "[2] アップロードファイルを移動しています…"
+
+#: class.RelocateUpload.php:98
+#, php-format
+msgid "[1] File Relocated: %s"
+msgstr "[1] ファイルを移動しました（%s）"
+
+#: class.RelocateUpload.php:128
+msgid "Moving..."
+msgstr "移動しています…"
+
+#: class.RelocateUpload.php:141
+msgid "Relocation Succeeded."
+msgstr "ファイルを移動しました。"
+
+#: class.RelocateUpload.php:145
+msgid "Relocation Failed."
+msgstr "ファイルの移動に失敗しました。"
+
+#: class.RelocateUpload.php:156
+msgid "All Folders"
+msgstr "全てのフォルダ"
+
+#: class.RelocateUpload.php:225
+msgid "Relocate Upload Folder"
+msgstr "アップロードファイルの移動"
+
+#: class.RelocateUpload.php:269
+msgid "Upload Locations"
+msgstr "アップロード場所一覧"
+
+#: class.RelocateUpload.php:272
+msgid "Relocate Upload - Locations"
+msgstr "アップロードファイルの移動：登録済の場所一覧"
+
+#: class.RelocateUpload.php:275
+#, php-format
+msgid "Paths relative to the blog's root directory: %s"
+msgstr "サイトのルートディレクトリ（%s）からの相対パス"
+
+#: class.RelocateUpload.php:295
+msgid "Remove Location"
+msgstr "場所を削除"
+
+#: class.RelocateUpload.php:298
+msgid "New Location"
+msgstr "新しい場所"
+
+#: class.RelocateUpload.php:305
+msgid "Update"
+msgstr "更新"
+
+#: class.ScheduleCalendar.php:78
+msgid "Date and Time"
+msgstr "日付と時間"
+
+#: class.ScheduleCalendar.php:604
+msgid "Open Time"
+msgstr "開始時刻"
+
+#: class.SiteData.php:11
+msgid "Site Data"
+msgstr "サイトデータ"
+
+#: class.SiteData.php:17
+msgid "Site Data Item"
+msgstr "サイトデータ項目"
+
+#: class.SiteData.php:91
+msgid "Edit Site Data"
+msgstr "サイトデータを編集"
+
+#: class.Taxonomy.php:128
+msgid "None"
+msgstr "なし"
+
+#: class.Taxonomy.php:147 includes/wpcf-shortcodes.php:1094
+#: includes/wpcf-shortcodes_20170426.php:1073
+msgid "Categories"
+msgstr "カテゴリー"
+
+#: class.Taxonomy.php:147
+msgid "Tags"
+msgstr "タグ"
+
+#: class.Taxonomy.php:148 includes/wpcf-content.php:723
+msgid "Category"
+msgstr "カテゴリー"
+
+#: class.Taxonomy.php:148
+msgid "Tag"
+msgstr "タグ"
+
+#: class.Taxonomy.php:160
+#, php-format
+msgid "Popular %s"
+msgstr "よく使う %s"
+
+#: class.Taxonomy.php:161
+#, php-format
+msgid "All %s"
+msgstr "全ての %s"
+
+#: class.Taxonomy.php:162
+#, php-format
+msgid "Parent %s"
+msgstr "親%s"
+
+#: class.Taxonomy.php:163
+#, php-format
+msgid "Parent %s:"
+msgstr "親%s:"
+
+#: class.Taxonomy.php:166
+#, php-format
+msgid "Update %s"
+msgstr "%sを更新"
+
+#: class.Taxonomy.php:169
+#, php-format
+msgid "Separate %ss with commas"
+msgstr "%sをカンマ区切りにする"
+
+#: class.Taxonomy.php:170
+#, php-format
+msgid "Add or remove %ss"
+msgstr "%sを追加または削除"
+
+#: class.Taxonomy.php:171
+#, php-format
+msgid "Choose from the most used %s"
+msgstr "よく使う%s"
+
+#: class.Taxonomy.php:348
+#, php-format
+msgid "Default %2$s term for %1$s"
+msgstr "%1$sの%2$s初期設定"
+
+#: class.Taxonomy.php:370
+msgid "(Do no set default term)"
+msgstr "（設定しない）"
+
+#: class.Taxonomy.php:378
+#, php-format
+msgid "%s is not registered."
+msgstr "%sが登録されていません"
+
+#: class.TermSearch.php:123
+msgid "Please select a value."
+msgstr "選択してください"
+
+#: class.TermSearch.php:124 includes/wpcf-scripts_and_styles.php:548
+#: includes/wpcf-scripts_and_styles.php:576
+msgid "Search"
+msgstr "検索"
+
+#: class.TermSearch.php:127
+msgid "Refine Search"
+msgstr "絞り込み検索"
+
+#: class.TermSearch.php:192
+msgid "Return to search top."
+msgstr "検索トップへ戻る"
+
+#: class.ThemeImage.php:67
+msgid "Updated Theme Image information on database."
+msgstr "テーマの画像の情報を更新してデータベースに保存しました。"
+
+#: class.ThemeImage.php:76
+msgid "Theme Image"
+msgstr "テーマの画像"
+
+#: class.ThemeImage.php:83
+msgid "Refresh image info"
+msgstr "テーマの画像の情報を最新にする"
+
+#: class.WelcartUtility.php:294 class.WelcartUtility.php:384
+msgid "dollars"
+msgstr ""
+
+#: class.WelcartUtility.php:369
+#, php-format
+msgid "See details about %s"
+msgstr "%sの詳細を見る"
+
+#: class.WelcartUtility.php:390
+#, php-format
+msgid "Zip: %s"
+msgstr "〒%s"
+
+#: class.WelcartUtility.php:391
+#, php-format
+msgid "Tel. %s"
+msgstr "TEL %s"
+
+#: class.WelcartUtility.php:392
+#, php-format
+msgid "Fax. %s"
+msgstr "FAX %s"
+
+#: class.WelcartUtility.php:393 class.WelcartUtility.php:394
+#: class.WelcartUtility.php:395 class.WelcartUtility.php:396
+#, php-format
+msgid "E-mail: %s"
+msgstr "E-mail: %s"
+
+#: class.WelcartUtility.php:397
+#, php-format
+msgid "©%s"
+msgstr "Ⓒ%s"
+
+#: includes/wpcf-admin.php:274
+msgid "Post Settings, Scripts and Styles"
+msgstr "投稿の設定／スクリプトとスタイル"
+
+#: includes/wpcf-admin.php:278
+msgid "CSS Files"
+msgstr "CSSファイル"
+
+#: includes/wpcf-admin.php:280
+msgid "CSS Codes"
+msgstr "CSSコード"
+
+#: includes/wpcf-admin.php:282
+msgid "JQuery specific code"
+msgstr "jQueryを利用するコード"
+
+#: includes/wpcf-admin.php:284
+msgid "Registered JavaScript Libraries"
+msgstr "登録済みのJavaScriptライブラリ"
+
+#: includes/wpcf-admin.php:286
+msgid "JavaScript Files"
+msgstr "JavaScriptファイル"
+
+#: includes/wpcf-admin.php:288
+msgid "JavaScript Codes"
+msgstr "JavaScriptコード"
+
+#: includes/wpcf-admin.php:290
+msgid "Do not use Post Excerpt"
+msgstr "抜粋を使用しない"
+
+#: includes/wpcf-admin.php:292
+msgid "Post Excerpt Length"
+msgstr "抜粋の文字数"
+
+#: includes/wpcf-admin.php:294
+msgid "Registered CSS Files"
+msgstr "登録済のCSSファイル"
+
+#: includes/wpcf-admin.php:296 includes/wpcf-admin.php:297
+msgid "No Post Thumbnail"
+msgstr "アイキャッチ画像を使用しない"
+
+#: includes/wpcf-admin.php:299
+msgid "Post Thumbnail Size"
+msgstr "投稿サムネイルのサイズ"
+
+#: includes/wpcf-admin.php:306
+msgid "Alternative Post Content Fields"
+msgstr "代替のコンテンツ"
+
+#: includes/wpcf-admin.php:309
+msgid "Specify H1 element content"
+msgstr "H1要素の内容を指定する"
+
+#: includes/wpcf-admin.php:311
+msgid "Title for Breadcrumb"
+msgstr "パンくずリスト用タイトル"
+
+#: includes/wpcf-admin.php:313
+msgid "Truncate Title for Breadcrumb"
+msgstr "パンくずリスト用にタイトルを短くする（文字数を指定）"
+
+#: includes/wpcf-admin.php:315
+msgid "Alternate Post Thumbnail"
+msgstr "代替のアイキャッチ画像"
+
+#: includes/wpcf-admin.php:320
+msgid "Alternative Post Excerpt"
+msgstr "抜粋"
+
+#: includes/wpcf-admin.php:325
+msgid "Post Meta Contents"
+msgstr "投稿のメタコンテンツ"
+
+#: includes/wpcf-admin.php:328
+msgid "Content After Header"
+msgstr "ページヘッダーの直後の内容"
+
+#: includes/wpcf-admin.php:332
+msgid "Content After \"Content Header\" Starts"
+msgstr "\"Content Header\" 冒頭の内容"
+
+#: includes/wpcf-admin.php:336
+msgid "Content At \"Content Header\" Ends"
+msgstr "\"Content Header\" 終了部分の内容"
+
+#: includes/wpcf-admin.php:345
+msgid "Utilities"
+msgstr "ユーティリティ"
+
+#: includes/wpcf-admin.php:348
+msgid "Color Picker"
+msgstr "カラーピッカー"
+
+#: includes/wpcf-attachment.php:499
+#, php-format
+msgid " (%d&times;%d)"
+msgstr "(%d&times;%d)"
+
+#: includes/wpcf-comment.php:16
+msgid "says:"
+msgstr "さん："
+
+#: includes/wpcf-comment.php:20
+msgid "Your comment is awaiting moderation."
+msgstr "コメントは認証待ちです。"
+
+#: includes/wpcf-comment.php:26
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s - %2$s"
+
+#: includes/wpcf-comment.php:66
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr "コメントを見るにはパスワードを入力してください。"
+
+#: includes/wpcf-comment.php:68
+msgid "Comments are closed."
+msgstr "現在コメントは受け付けておりません。"
+
+#: includes/wpcf-comment.php:71
+#, php-format
+msgid "%1$s&larr;%2$s Older Comments"
+msgstr "%1$s&larr;%2$s 以前のコメント"
+
+#: includes/wpcf-comment.php:76
+#, php-format
+msgid "Newer Comments %1$s&larr;%2$s"
+msgstr "次のコメント %1$s&larr;%2$s"
+
+#: includes/wpcf-content.php:875
+#, php-format
+msgid "%1$s / %2$s Pages"
+msgstr "%1$s / %2$s ページ"
+
+#: includes/wpcf-content.php:891
+msgid "Next page"
+msgstr "次のページ"
+
+#: includes/wpcf-content.php:892
+msgid "Previous page"
+msgstr "前のページ"
+
+#: includes/wpcf-shortcodes.php:1003 includes/wpcf-shortcodes_20170426.php:982
+msgid "Bookmarks"
+msgstr "ブックマーク"
+
+#: includes/wpcf-taxonomy.php:569
+msgid "Invalid taxonomy"
+msgstr "不正なタクソノミー"
+
+#: includes/wpcf-taxonomy.php:775
+#, php-format
+msgid "View all posts in %s"
+msgstr "%s に含まれる投稿を全て表示"
+
+#~ msgid "Content Before WP Title"
+#~ msgstr "WP TItle の前の内容"
+
+#~ msgid "Content After WP Title"
+#~ msgstr "WP Title の後の内容"
+
+#~ msgid "Post Header"
+#~ msgstr "投稿のヘッダ"
+
+#~ msgid "Post Meta Text Above Content"
+#~ msgstr "メタコンテンツ"
+
+#, fuzzy
+#~ msgid "Relocate Upload Settings - Locations"
+#~ msgstr "アップロードファイルの移動：登録済の場所一覧"
+
+#~ msgid "JavaScript Library Directory (Absolute URI Path)"
+#~ msgstr "JavaScriptライブラリの絶対URIパス"
+
+#~ msgid "Common CSS Files Directory (Absolute URI Path)"
+#~ msgstr "CSSファイルライブラリの絶対URIパス"
+
+#~ msgid "Common Image Directory (Absolute URI Path)"
+#~ msgstr "画像ライブラリの絶対URIパス"
+
+#~ msgid "Nubmer of Alternate Post Thumbnails"
+#~ msgstr "代替アイキャッチ画像の数"
+
+#~ msgid "Use URL path instead of full URL"
+#~ msgstr "完全URLの代わりに"
+
+#, fuzzy
+#~ msgid "<cite class=\"fn\">%s</cite> <span class=\"says\">says:</span>"
+#~ msgstr "%s さんより："
+
+#~ msgid "Site Options"
+#~ msgstr "サイトのオプション"
+
+#~ msgid "Option"
+#~ msgstr "オプション"
+
+#~ msgid "Custom Functions Options"
+#~ msgstr "Custom Functions オプション"
+
+#~ msgid "Media Categories"
+#~ msgstr "メディアカテゴリー"
+
+#, fuzzy
+#~ msgid "Castor"
+#~ msgstr "カテゴリー"
+
+#~ msgid "CASTOR"
+#~ msgstr "蟹座"
+
+#~ msgid "Read more..."
+#~ msgstr "もっと読む…"
+
+#~ msgid "Add New "
+#~ msgstr "追加"

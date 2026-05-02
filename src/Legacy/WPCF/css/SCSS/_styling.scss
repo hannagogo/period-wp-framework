@@ -1,0 +1,14 @@
+@mixin icon_format($size) {
+ content: "";
+ display: block;
+ width: $size;
+ height: $size;
+ margin: 0;
+ border-radius: $size / 2;
+ background-repeat: no-repeat;
+ background-position: center center;
+ background-size: cover;
+ float: left;
+// margin-top: -.25em;
+// margin-right: .5em;
+}
