@@ -145,6 +145,7 @@ new MetaBox([
 
 - `docs/usage-metabox.md`
 - `docs/usage-tax-query.md`
+- `docs/usage-page-navigation.md`
 
 ## 主な Support 機能
 
