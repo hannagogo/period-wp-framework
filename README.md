@@ -64,13 +64,21 @@ $app->assets()
 
 ## PostTypeRegistrar
 
-カスタム投稿タイプとタクソノミーをラップして登録できます。
+カスタム投稿タイプとタクソノミーをラップして登録できます。`metaBox()` を併用すると、前に登録した投稿タイプを自動的に MetaBox に設定できます。
 
 ```php
 $app->posts()
     ->register('news', [
         'label' => 'ニュース',
         'menu_icon' => 'dashicons-media-text',
+    ])
+    ->metaBox([
+        'id' => 'news_detail',
+        'title' => 'ニュース詳細',
+        'fields' => [
+            ['name' => 'lead', 'type' => 'textarea'],
+            ['name' => 'main_image', 'type' => 'image'],
+        ],
     ])
     ->registerTaxonomy('news_category', 'news', [
         'label' => 'ニュースカテゴリー',

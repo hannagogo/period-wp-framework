@@ -8,6 +8,8 @@ final class PostTypeRegistrar
 {
     private array $postTypes = [];
     private array $taxonomies = [];
+    private array $metaBoxes = [];
+    private ?string $currentPostType = null;
 
     public function __construct()
     {
@@ -15,6 +17,7 @@ final class PostTypeRegistrar
 
     public function register(string $postType, array $args = []): self
     {
+        $this->currentPostType = $postType;
         $this->postTypes[$postType] = $this->resolvePostTypeArgs($args);
 
         return $this;
@@ -34,6 +37,22 @@ final class PostTypeRegistrar
         return $this;
     }
 
+    public function metaBox(array $config): self
+    {
+        if (!isset($config['post_type']) && $this->currentPostType !== null) {
+            $config['post_type'] = $this->currentPostType;
+        }
+
+        $this->metaBoxes[] = $config;
+
+        return $this;
+    }
+
+    public function metaBoxes(): array
+    {
+        return $this->metaBoxes;
+    }
+
     public function boot(): void
     {
         if (!function_exists('add_action')) {
@@ -45,7 +64,20 @@ final class PostTypeRegistrar
         add_action('init', function () use ($self): void {
             $self->registerAll();
             $self->registerTaxonomiesAll();
+            $self->registerMetaBoxesAll();
         });
+    }
+
+    private function registerMetaBoxesAll(): void
+    {
+        if (!class_exists(MetaBox::class)) {
+            return;
+        }
+
+        foreach ($this->metaBoxes as $config) {
+            $metaBox = new MetaBox($config);
+            $metaBox->register();
+        }
     }
 
     private function registerAll(): void

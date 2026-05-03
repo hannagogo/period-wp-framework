@@ -51,4 +51,69 @@ final class PostTypeRegistrarTest extends TestCase
             $registrar->register('news', ['label' => 'ニュース'])->registerTaxonomy('news_category', 'news', ['label' => 'カテゴリー'])
         );
     }
+
+    public function testMetaBoxDoesNotFailWithoutWordPress(): void
+    {
+        $registrar = new PostTypeRegistrar();
+
+        $this->assertSame(
+            $registrar,
+            $registrar->metaBox([
+                'id' => 'news_detail',
+                'title' => 'ニュース詳細',
+                'fields' => [
+                    ['name' => 'lead', 'type' => 'textarea'],
+                ],
+            ])
+        );
+    }
+
+    public function testRegisterMetaBoxBootDoesNotFailWithoutWordPress(): void
+    {
+        $registrar = new PostTypeRegistrar();
+
+        $registrar->register('news', ['label' => 'ニュース'])
+            ->metaBox([
+                'id' => 'news_detail',
+                'title' => 'ニュース詳細',
+                'fields' => [
+                    ['name' => 'lead', 'type' => 'textarea'],
+                ],
+            ]);
+
+        $this->assertNull($registrar->boot());
+    }
+
+    public function testMetaBoxAddsCurrentPostTypeWhenMissing(): void
+    {
+        $registrar = new PostTypeRegistrar();
+
+        $registrar->register('news', ['label' => 'ニュース'])
+            ->metaBox([
+                'id' => 'news_detail',
+                'title' => 'ニュース詳細',
+                'fields' => [
+                    ['name' => 'lead', 'type' => 'textarea'],
+                ],
+            ]);
+
+        $this->assertSame('news', $registrar->metaBoxes()[0]['post_type']);
+    }
+
+    public function testMetaBoxKeepsExplicitPostType(): void
+    {
+        $registrar = new PostTypeRegistrar();
+
+        $registrar->register('news', ['label' => 'ニュース'])
+            ->metaBox([
+                'id' => 'news_detail',
+                'post_type' => 'custom_news',
+                'title' => 'ニュース詳細',
+                'fields' => [
+                    ['name' => 'lead', 'type' => 'textarea'],
+                ],
+            ]);
+
+        $this->assertSame('custom_news', $registrar->metaBoxes()[0]['post_type']);
+    }
 }
