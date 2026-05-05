@@ -870,4 +870,13 @@ final class MetaBox
 
         return $selected ? 'selected' : '';
     }
+    private function normalizeFieldValue(mixed $value): array
+    {
+        if ($value === null) {
+            return [null];
+        }
+
+        return (array) $value;
+    }
+
 }
