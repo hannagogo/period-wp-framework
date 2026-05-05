@@ -24,18 +24,59 @@ final class Element
 
     private string $tag;
     private array $attrs;
-    private array|string|null $children;
+    private array|string|null|RawHtml $children;
     private bool $onlyOpen = false;
     private bool $onlyClose = false;
 
-    public function __construct(string $tag, array $attrs = [], array|string|null $children = null)
+    public static function el(string $tag, array $attrs = [], string|RawHtml $content = ''): string
+    {
+        return (new self($tag, $attrs, $content))->render();
+    }
+
+    public static function void(string $tag, array $attrs = []): string
+    {
+        return (new self($tag, $attrs))->render();
+    }
+
+    public static function class(array|string|null ...$classes): string
+    {
+        $normalized = [];
+
+        foreach ($classes as $class) {
+            self::flattenClass($class, $normalized);
+        }
+
+        $normalized = array_values(array_unique($normalized, SORT_STRING));
+
+        return implode(' ', $normalized);
+    }
+
+    private static function flattenClass(array|string|null $value, array &$result): void
+    {
+        if ($value === null || $value === false || $value === '') {
+            return;
+        }
+
+        if (is_string($value)) {
+            $result[] = $value;
+            return;
+        }
+
+        if (is_array($value)) {
+            foreach ($value as $item) {
+                self::flattenClass($item, $result);
+            }
+        }
+    }
+
+    public function __construct(string $tag, array $attrs = [], array|string|null|RawHtml $children = null)
     {
         $this->tag = $tag;
         $this->attrs = $attrs;
         $this->children = $children;
     }
 
-    public static function div(array $attrs = [], array|string|null $children = null): self
+    public static function div(array $attrs = [], array|string|null|RawHtml $children = null): self
     {
         return new self('div', $attrs, $children);
     }
@@ -116,12 +157,28 @@ final class Element
                 continue;
             }
 
+            if ($value === '' && $key !== 'alt') {
+                continue;
+            }
+
             // 属性名の簡易バリデーション
             if (!preg_match('/^[a-zA-Z_:][-a-zA-Z0-9_:.]*$/', (string) $key)) {
                 continue;
             }
 
-            // JSONスイッチ（data-* かつ配列/オブジェクトの場合のみ）
+            if ($key === 'class' && is_array($value)) {
+                $value = self::class($value);
+                if ($value === '') {
+                    continue;
+                }
+            }
+
+            if ($value === true) {
+                $escapedKey = $this->escapeHtml((string) $key);
+                $result .= ' ' . $escapedKey;
+                continue;
+            }
+
             if ((is_array($value) || is_object($value)) && str_starts_with((string) $key, 'data-')) {
                 $value = json_encode($value, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
@@ -130,7 +187,6 @@ final class Element
                 }
             }
 
-            // 非スカラーは無視
             if (!is_scalar($value)) {
                 continue;
             }
@@ -148,6 +204,10 @@ final class Element
     {
         if ($this->children === null) {
             return '';
+        }
+
+        if ($this->children instanceof RawHtml) {
+            return $this->children->render();
         }
 
         if (is_string($this->children)) {

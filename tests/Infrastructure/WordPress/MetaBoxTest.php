@@ -607,6 +607,287 @@ final class MetaBoxTest extends TestCase
         $this->assertSame('', $output);
     }
 
+    // --- label fallback tests ---
+
+    public function testButtonLabelFallbackForGallery(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'imgs', 'type' => 'gallery']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Select images', $output);
+    }
+
+    public function testButtonLabelFallbackForRepeater(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'items', 'type' => 'repeater', 'fields' => [
+                ['name' => 'title', 'type' => 'text'],
+            ]]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Add', $output);
+    }
+
+    public function testButtonLabelFallbackForImage(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'img', 'type' => 'image']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Select image', $output);
+    }
+
+    public function testButtonLabelFallbackForMedia(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'file', 'type' => 'media']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Select', $output);
+        $this->assertStringNotContainsString('Select image', $output);
+        $this->assertStringNotContainsString('Select images', $output);
+    }
+
+    public function testClearLabelFallback(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'img', 'type' => 'image']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Clear', $output);
+    }
+
+    public function testRemoveLabelDefaultIsRemove(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'items', 'type' => 'repeater', 'fields' => [
+                ['name' => 'title', 'type' => 'text'],
+            ]]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('period-wp-metabox-repeater-remove', $output);
+        $this->assertStringNotContainsString('削除', $output);
+    }
+
+    public function testRemoveLabelCustomValue(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'items', 'type' => 'repeater', 'remove_label' => '削除', 'fields' => [
+                ['name' => 'title', 'type' => 'text'],
+            ]]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('>削除<', $output);
+    }
+
+    public function testButtonLabelCustomValueOverridesFallback(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box',
+            'title' => 'Box',
+            'post_type' => 'post',
+            'fields' => [['name' => 'imgs', 'type' => 'gallery', 'button_label' => 'ギャラリーを選択']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('ギャラリーを選択', $output);
+        $this->assertStringNotContainsString('Select images', $output);
+    }
+
+    // --- labels array tests ---
+
+    public function testLabelsSelectImagesAppliedToGallery(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'imgs', 'type' => 'gallery',
+                'labels' => ['select_images' => 'Choose photos'],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Choose photos', $output);
+        $this->assertStringNotContainsString('Select images', $output);
+    }
+
+    public function testLabelsClearAppliedToClearButton(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'img', 'type' => 'image',
+                'labels' => ['clear' => 'Reset'],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Reset', $output);
+        $this->assertStringNotContainsString('Clear', $output);
+    }
+
+    public function testLabelsAddAppliedToRepeaterAddButton(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'items', 'type' => 'repeater',
+                'labels' => ['add' => 'New item'],
+                'fields' => [['name' => 'title', 'type' => 'text']],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('New item', $output);
+        $this->assertStringNotContainsString('>Add<', $output);
+    }
+
+    public function testLabelsRemoveAppliedToRepeaterRemoveButton(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'items', 'type' => 'repeater',
+                'labels' => ['remove' => 'Delete'],
+                'fields' => [['name' => 'title', 'type' => 'text']],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('>Delete<', $output);
+        $this->assertStringNotContainsString('>Remove<', $output);
+    }
+
+    public function testLabelsTakesPrecedenceOverButtonLabel(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'imgs', 'type' => 'gallery',
+                'button_label' => 'Legacy label',
+                'labels' => ['select_images' => 'New label'],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('New label', $output);
+        $this->assertStringNotContainsString('Legacy label', $output);
+    }
+
+    public function testLegacyButtonLabelStillWorksWithoutLabels(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [['name' => 'imgs', 'type' => 'gallery', 'button_label' => 'Pick images']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Pick images', $output);
+    }
+
+    public function testLegacyClearLabelStillWorksWithoutLabels(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [['name' => 'img', 'type' => 'image', 'clear_label' => 'Wipe']],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('Wipe', $output);
+    }
+
+    public function testLegacyRemoveLabelStillWorksWithoutLabels(): void
+    {
+        $metaBox = new MetaBox([
+            'id' => 'box', 'title' => 'Box', 'post_type' => 'post',
+            'fields' => [[
+                'name' => 'items', 'type' => 'repeater',
+                'remove_label' => 'Erase',
+                'fields' => [['name' => 'title', 'type' => 'text']],
+            ]],
+        ]);
+
+        ob_start();
+        $metaBox->render((object) ['ID' => 0]);
+        $output = ob_get_clean();
+
+        $this->assertStringContainsString('>Erase<', $output);
+    }
+
     public function testSaveFieldValueFromPostDataTakesPrecedenceOverGlobalPost(): void
     {
         global $METABOX_TEST_META_UPDATES;

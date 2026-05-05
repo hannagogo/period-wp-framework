@@ -45,18 +45,54 @@ $box->register();
 | `gallery` | JSON（attachment ID の配列） | `sortable: true` で並び替え可 |
 | `repeater` | JSON（オブジェクト配列） | 子フィールドを `fields` で定義 |
 
+### ボタン文言の設定（labels）
+
+各フィールドに `labels` 配列を指定することで、ボタン類の表示文言を一括設定できる。
+
+```php
+[
+    'name'   => 'gallery_ids',
+    'type'   => 'gallery',
+    'labels' => [
+        'select_images' => '画像を選択',  // gallery の選択ボタン
+        'clear'         => 'クリア',      // クリアボタン（image/media/gallery 共通）
+    ],
+]
+```
+
+`labels` のキーと対応するフィールド種別:
+
+| キー | 用途 | デフォルト |
+|------|------|-----------|
+| `select_image` | image の選択ボタン | `"Select image"` |
+| `select` | media の選択ボタン | `"Select"` |
+| `select_images` | gallery の選択ボタン | `"Select images"` |
+| `add` | repeater の追加ボタン | `"Add"` |
+| `clear` | image / media / gallery のクリアボタン | `"Clear"` |
+| `remove` | repeater アイテムの削除ボタン | `"Remove"` |
+
+**後方互換キー** — `labels` の代わりに個別キーでも指定できる。両方ある場合は `labels` が優先される。
+
+| 個別キー | 対応する labels キー |
+|----------|---------------------|
+| `button_label` | type に応じた選択/追加ボタン |
+| `clear_label` | `clear` |
+| `remove_label` | `remove` |
+
 ### gallery フィールド
 
 ```php
 [
-    'name'         => 'gallery_ids',
-    'type'         => 'gallery',
-    'label'        => 'ギャラリー',
-    'mime'         => 'image',       // デフォルト: image
-    'sortable'     => true,          // デフォルト: true
-    'button_label' => '画像を選択',  // デフォルト: 画像を選択
-    'clear_label'  => 'クリア',      // デフォルト: クリア
-    'preview'      => true,          // デフォルト: true
+    'name'    => 'gallery_ids',
+    'type'    => 'gallery',
+    'label'   => 'ギャラリー',
+    'mime'    => 'image',   // デフォルト: image
+    'sortable' => true,     // デフォルト: true
+    'preview' => true,      // デフォルト: true
+    'labels'  => [
+        'select_images' => '画像を選択',
+        'clear'         => 'クリア',
+    ],
 ]
 ```
 
@@ -66,15 +102,19 @@ $box->register();
 
 ```php
 [
-    'name'     => 'items',
-    'type'     => 'repeater',
-    'fields'   => [
+    'name'   => 'items',
+    'type'   => 'repeater',
+    'fields' => [
         ['name' => 'title',    'type' => 'text'],
         ['name' => 'image_id', 'type' => 'image'],
     ],
-    'min'      => 0,     // 削除の下限。デフォルト: 0
-    'max'      => null,  // 追加の上限。null = 無制限
+    'min'    => 0,     // 削除の下限。デフォルト: 0
+    'max'    => null,  // 追加の上限。null = 無制限
     'sortable' => true,
+    'labels' => [
+        'add'    => '追加',
+        'remove' => '削除',
+    ],
 ]
 ```
 

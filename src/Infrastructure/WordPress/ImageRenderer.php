@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Period\WpFramework\Infrastructure\WordPress;
 
 use Period\WpFramework\Support\ImageUtil;
+use Period\WpFramework\View\Element;
 
 final class ImageRenderer
 {
@@ -30,7 +31,13 @@ final class ImageRenderer
         $orientation = ImageUtil::orientation($width, $height);
         $wrapperClasses = $this->buildWrapperClasses($args['wrapper_class'], $orientation, $args['class']);
 
-        $imgHtml = $this->buildImageHtml($src, $width, $height, $alt, $args['lazy']);
+        $imgHtml = Element::void('img', [
+            'src' => $src,
+            'width' => $width,
+            'height' => $height,
+            'alt' => $alt,
+            'loading' => $args['lazy'] ? 'lazy' : null,
+        ]);
 
         if ($args['wrapper']) {
             return sprintf('<div class="%s">%s</div>', htmlspecialchars($wrapperClasses, ENT_QUOTES, 'UTF-8'), $imgHtml);
@@ -85,29 +92,4 @@ final class ImageRenderer
         return implode(' ', $classes);
     }
 
-    private function buildImageHtml(string $src, int $width, int $height, string $alt, bool $lazy): string
-    {
-        $srcAttr = $this->escapeUrl($src);
-        $altAttr = $this->escapeAttr($alt);
-        $loading = $lazy ? ' loading="lazy"' : '';
-
-        return sprintf(
-            '<img src="%s" width="%d" height="%d" alt="%s"%s>',
-            $srcAttr,
-            $width,
-            $height,
-            $altAttr,
-            $loading
-        );
-    }
-
-    private function escapeAttr(string $value): string
-    {
-        return function_exists('esc_attr') ? esc_attr($value) : htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
-    }
-
-    private function escapeUrl(string $url): string
-    {
-        return function_exists('esc_url') ? esc_url($url) : $url;
-    }
 }

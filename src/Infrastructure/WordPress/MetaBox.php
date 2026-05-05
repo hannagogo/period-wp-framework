@@ -243,6 +243,7 @@ final class MetaBox
         $placeholder = $field['placeholder'] ?? '';
         $buttonLabel = $field['button_label'] ?? '';
         $clearLabel = $field['clear_label'] ?? '';
+        $removeLabel = $field['remove_label'] ?? '';
         $mime = $field['mime'] ?? '';
         $sortable = isset($field['sortable']) ? (bool) $field['sortable'] : true;
         $min = isset($field['min']) && is_int($field['min']) && $field['min'] >= 0 ? $field['min'] : 0;
@@ -261,6 +262,8 @@ final class MetaBox
         $groupDefaultOpen = isset($group['default_open']) ? (bool) $group['default_open'] : true;
         $groupIndexLabel = isset($group['index_label']) ? (bool) $group['index_label'] : true;
 
+        $labels = $this->normalizeLabels($field, $type);
+
         return [
             'name' => isset($field['name']) && is_string($field['name']) ? $field['name'] : '',
             'label' => isset($field['label']) && is_string($field['label']) ? $field['label'] : '',
@@ -270,8 +273,10 @@ final class MetaBox
             'options' => is_array($options) ? $options : [],
             'description' => is_string($description) ? $description : '',
             'placeholder' => is_string($placeholder) ? $placeholder : '',
-            'button_label' => is_string($buttonLabel) && $buttonLabel !== '' ? $buttonLabel : ($type === 'gallery' ? '画像を選択' : ($type === 'repeater' ? '追加' : '選択')),
-            'clear_label' => is_string($clearLabel) && $clearLabel !== '' ? $clearLabel : 'クリア',
+            'button_label' => $labels[$type === 'gallery' ? 'select_images' : ($type === 'repeater' ? 'add' : ($type === 'image' ? 'select_image' : 'select'))],
+            'clear_label' => $labels['clear'],
+            'remove_label' => $labels['remove'],
+            'labels' => $labels,
             'preview' => isset($field['preview']) ? (bool) $field['preview'] : true,
             'mime' => is_string($mime) ? ($type === 'gallery' && $mime === '' ? 'image' : $mime) : ($type === 'gallery' ? 'image' : ''),
             'sortable' => $sortable,
@@ -283,6 +288,35 @@ final class MetaBox
                 'default_open' => $groupDefaultOpen,
                 'index_label' => $groupIndexLabel,
             ],
+        ];
+    }
+
+    private function normalizeLabels(array $field, string $type): array
+    {
+        $explicit = isset($field['labels']) && is_array($field['labels']) ? $field['labels'] : [];
+        $buttonLabel = isset($field['button_label']) && is_string($field['button_label']) && $field['button_label'] !== '' ? $field['button_label'] : null;
+        $clearLabel = isset($field['clear_label']) && is_string($field['clear_label']) && $field['clear_label'] !== '' ? $field['clear_label'] : null;
+        $removeLabel = isset($field['remove_label']) && is_string($field['remove_label']) && $field['remove_label'] !== '' ? $field['remove_label'] : null;
+
+        $translator = function_exists('pwf') ? pwf()->translator() : null;
+
+        $resolve = function (string $key, ?string $legacy, string $fallback) use ($explicit, $translator): string {
+            if (isset($explicit[$key]) && is_string($explicit[$key]) && $explicit[$key] !== '') {
+                return $explicit[$key];
+            }
+            if ($legacy !== null) {
+                return $legacy;
+            }
+            return $translator !== null ? $translator->text($fallback) : $fallback;
+        };
+
+        return [
+            'select'        => $resolve('select',        $type === 'media'    ? $buttonLabel : null, 'Select'),
+            'select_image'  => $resolve('select_image',  $type === 'image'    ? $buttonLabel : null, 'Select image'),
+            'select_images' => $resolve('select_images', $type === 'gallery'  ? $buttonLabel : null, 'Select images'),
+            'add'           => $resolve('add',           $type === 'repeater' ? $buttonLabel : null, 'Add'),
+            'clear'         => $resolve('clear',         $clearLabel,                                 'Clear'),
+            'remove'        => $resolve('remove',        $removeLabel,                                'Remove'),
         ];
     }
 
@@ -440,8 +474,8 @@ final class MetaBox
         $label = $this->escapeHtml($field['label'] ?: $field['name']);
         $name = $this->escapeAttr($field['name']);
         $id = $this->escapeAttr($this->fieldId($field['name']));
-        $buttonLabel = $this->escapeAttr($field['button_label']);
-        $clearLabel = $this->escapeAttr($field['clear_label']);
+        $buttonLabel = $this->escapeAttr($field['type'] === 'image' ? $field['labels']['select_image'] : $field['labels']['select']);
+        $clearLabel = $this->escapeAttr($field['labels']['clear']);
         $previewTarget = $this->fieldId($field['name'] . '_preview');
         $mime = $this->escapeAttr((string) ($field['mime'] ?? ''));
         $value = $this->escapeAttr((string) $value);
@@ -486,8 +520,8 @@ final class MetaBox
         $label = $this->escapeHtml($field['label'] ?: $field['name']);
         $name = $this->escapeAttr($field['name']);
         $id = $this->escapeAttr($this->fieldId($field['name']));
-        $buttonLabel = $this->escapeAttr($field['button_label']);
-        $clearLabel = $this->escapeAttr($field['clear_label']);
+        $buttonLabel = $this->escapeAttr($field['labels']['select_images']);
+        $clearLabel = $this->escapeAttr($field['labels']['clear']);
         $previewTarget = $this->fieldId($field['name'] . '_preview');
         $mime = $this->escapeAttr((string) ($field['mime'] ?? ''));
         $galleryIds = $this->normalizeGalleryValue($value);
@@ -542,7 +576,7 @@ final class MetaBox
     {
         $label = $this->escapeHtml($field['label'] ?: $field['name']);
         $name = $this->escapeAttr($field['name']);
-        $buttonLabel = $this->escapeAttr($field['button_label']);
+        $buttonLabel = $this->escapeAttr($field['labels']['add']);
         $sortable = $field['sortable'] ? 'true' : 'false';
         $min = (int) ($field['min'] ?? 0);
         $max = $field['max'] === null ? '' : (string) $field['max'];
@@ -605,6 +639,7 @@ final class MetaBox
         $groupCollapsible = isset($group['collapsible']) ? (bool) $group['collapsible'] : false;
         $groupDefaultOpen = isset($group['default_open']) ? (bool) $group['default_open'] : true;
         $groupIndexLabel = isset($group['index_label']) ? (bool) $group['index_label'] : true;
+        $removeLabel = $field['labels']['remove'] ?? 'Remove';
 
         if ($groupLabel !== '' || $groupCollapsible || $groupIndexLabel) {
             $headerText = $groupLabel !== '' ? $groupLabel : '';
@@ -617,20 +652,22 @@ final class MetaBox
             $itemFields = sprintf('<div data-period-wp-group>%s%s</div>', $header, $body);
 
             return sprintf(
-                '<div data-period-wp-repeater-item data-item-index="%s" data-group-label="%s" data-group-collapsible="%s" data-group-default-open="%s" data-group-index-label="%s">%s<p><button type="button" class="period-wp-metabox-repeater-remove">削除</button></p></div>',
+                '<div data-period-wp-repeater-item data-item-index="%s" data-group-label="%s" data-group-collapsible="%s" data-group-default-open="%s" data-group-index-label="%s">%s<p><button type="button" class="period-wp-metabox-repeater-remove">%s</button></p></div>',
                 $this->escapeAttr($index),
                 $this->escapeAttr($groupLabel),
                 $groupCollapsible ? 'true' : 'false',
                 $groupDefaultOpen ? 'true' : 'false',
                 $groupIndexLabel ? 'true' : 'false',
-                $itemFields
+                $itemFields,
+                $this->escapeHtml($removeLabel)
             );
         }
 
         return sprintf(
-            '<div data-period-wp-repeater-item data-item-index="%s">%s<p><button type="button" class="period-wp-metabox-repeater-remove">削除</button></p></div>',
+            '<div data-period-wp-repeater-item data-item-index="%s">%s<p><button type="button" class="period-wp-metabox-repeater-remove">%s</button></p></div>',
             $this->escapeAttr($index),
-            $itemFields
+            $itemFields,
+            $this->escapeHtml($removeLabel)
         );
     }
 

@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace Period\WpFramework\Infrastructure\WordPress;
 
+use Period\WpFramework\View\Element;
+use Period\WpFramework\View\RawHtml;
+
 final class PageNavigationRenderer
 {
     public function render(array $args = []): string
@@ -13,6 +16,7 @@ final class PageNavigationRenderer
         }
 
         $args = $this->normalizeArgs($args);
+        $ariaLabel = $args['aria_label'];
 
         global $wp_query;
 
@@ -34,7 +38,8 @@ final class PageNavigationRenderer
                 $maxPages,
                 $args['prev_label'],
                 $args['next_label'],
-                $args['class']
+                $args['class'],
+                $ariaLabel
             );
 
             if (str_starts_with(trim($content), '<nav')) {
@@ -50,10 +55,12 @@ final class PageNavigationRenderer
 
         $class = htmlspecialchars($args['class'], ENT_QUOTES, 'UTF-8');
         $typeAttr = htmlspecialchars($args['type'], ENT_QUOTES, 'UTF-8');
+        $ariaLabelAttr = htmlspecialchars($ariaLabel, ENT_QUOTES, 'UTF-8');
 
         return sprintf(
-            '<nav class="%s" aria-label="ページナビゲーション" data-type="%s">%s%s%s</nav>',
+            '<nav class="%s" aria-label="%s" data-type="%s">%s%s%s</nav>',
             $class,
+            $ariaLabelAttr,
             $typeAttr,
             $args['before'],
             $content,
@@ -61,7 +68,7 @@ final class PageNavigationRenderer
         );
     }
 
-    private function renderPaginateLinks(int $current, int $maxPages, string $prevLabel, string $nextLabel, string $class): string
+    private function renderPaginateLinks(int $current, int $maxPages, string $prevLabel, string $nextLabel, string $class, string $ariaLabel): string
     {
         $classAttr = htmlspecialchars($class, ENT_QUOTES, 'UTF-8');
         $big = 999999999;
@@ -84,10 +91,13 @@ final class PageNavigationRenderer
         ]);
 
         if (is_string($links)) {
-            return sprintf(
-                '<nav class="%s" aria-label="ページナビゲーション">%s</nav>',
-                $classAttr,
-                $links
+            return Element::el(
+                'nav',
+                [
+                    'class' => $class,
+                    'aria-label' => $ariaLabel,
+                ],
+                Element::raw($links)
             );
         }
 
@@ -95,15 +105,26 @@ final class PageNavigationRenderer
             return '';
         }
 
-        $html = sprintf('<nav class="%s" aria-label="ページナビゲーション"><ul>', $classAttr);
-
+        $items = '';
         foreach ($links as $link) {
             $isCurrent = is_string($link) && str_contains($link, 'current');
-            $liClass = $isCurrent ? ' class="is-current"' : '';
-            $html .= '<li' . $liClass . '>' . $link . '</li>';
+            $items .= Element::el(
+                'li',
+                ['class' => $isCurrent ? 'is-current' : null],
+                Element::raw($link)
+            );
         }
 
-        return $html . '</ul></nav>';
+        $list = Element::el('ul', [], Element::raw($items));
+
+        return Element::el(
+            'nav',
+            [
+                'class' => $class,
+                'aria-label' => $ariaLabel,
+            ],
+            Element::raw($list)
+        );
     }
 
     private function normalizeArgs(array $args): array
@@ -114,6 +135,16 @@ final class PageNavigationRenderer
         $class = $args['class'] ?? null;
         $before = $args['before'] ?? null;
         $after = $args['after'] ?? null;
+        $ariaLabel = $args['aria_label'] ?? null;
+        $label = $args['label'] ?? null;
+
+        if (is_string($ariaLabel) && $ariaLabel !== '') {
+            $resolvedAriaLabel = $ariaLabel;
+        } elseif (is_string($label) && $label !== '') {
+            $resolvedAriaLabel = $label;
+        } else {
+            $resolvedAriaLabel = 'pagination';
+        }
 
         return [
             'type' => is_string($type) && $type !== '' ? $type : 'archive',
@@ -123,6 +154,7 @@ final class PageNavigationRenderer
             'show_numbers' => isset($args['show_numbers']) ? (bool) $args['show_numbers'] : true,
             'before' => is_string($before) ? $before : '',
             'after' => is_string($after) ? $after : '',
+            'aria_label' => $resolvedAriaLabel,
         ];
     }
 

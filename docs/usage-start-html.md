@@ -1,0 +1,33 @@
+# Start HTML
+
+`StartHtmlRenderer` は HTML ドキュメントの開始部分を生成するレンダラーです。`<html>` と `<head>` の開始タグ、および `meta charset` を出力します。
+
+### 使用例
+
+```php
+use Period\WpFramework\Infrastructure\WordPress\StartHtmlRenderer;
+
+$renderer = new StartHtmlRenderer();
+echo $renderer->render([
+    'version' => 'html5',
+    'charset' => 'UTF-8',
+    'elements' => [
+        '<title>サイトタイトル</title>',
+    ],
+]);
+```
+
+### 引数
+
+- `version`: `html5` などのバージョン文字列。`xhtml` で始まる場合は XHTML 用の `language_attributes` を使います。
+- `elements`: `string` / `RawHtml` / `Element` を head 内に追加する配列
+- `charset`: string|null, `meta charset` に使用。指定がない場合は `get_bloginfo('charset')` または `UTF-8` を使います。
+- `newline`: 改行文字。デフォルトは `\n`
+
+### 仕様
+
+- `<!doctype html>` を出力
+- `<html ...>` と `<head>` の開始タグを出力
+- `meta charset` を出力
+- `</head>` や `<body>` は出力しない
+- WordPress 関数がなくてもフォールバックして出力する

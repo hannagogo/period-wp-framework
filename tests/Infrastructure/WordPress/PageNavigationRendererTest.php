@@ -132,6 +132,72 @@ PHP
         $this->assertSame('', $renderer->render());
     }
 
+    /**
+     * @runInSeparateProcess
+     */
+    public function testAriaLabelFromAriaLabelArg(): void
+    {
+        $this->ensurePageNavigationFunctions();
+
+        global $wp_query;
+        $wp_query = (object) ['max_num_pages' => 3];
+
+        $renderer = new PageNavigationRenderer();
+        $output = $renderer->render(['aria_label' => 'Page navigation']);
+
+        $this->assertStringContainsString('aria-label="Page navigation"', $output);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testAriaLabelFromLabelArgWhenAriaLabelNotSet(): void
+    {
+        $this->ensurePageNavigationFunctions();
+
+        global $wp_query;
+        $wp_query = (object) ['max_num_pages' => 3];
+
+        $renderer = new PageNavigationRenderer();
+        $output = $renderer->render(['label' => 'ページナビ']);
+
+        $this->assertStringContainsString('aria-label="ページナビ"', $output);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testAriaLabelAriaLabelTakesPrecedenceOverLabel(): void
+    {
+        $this->ensurePageNavigationFunctions();
+
+        global $wp_query;
+        $wp_query = (object) ['max_num_pages' => 3];
+
+        $renderer = new PageNavigationRenderer();
+        $output = $renderer->render(['aria_label' => 'Custom aria', 'label' => 'Ignored label']);
+
+        $this->assertStringContainsString('aria-label="Custom aria"', $output);
+        $this->assertStringNotContainsString('aria-label="Ignored label"', $output);
+    }
+
+    /**
+     * @runInSeparateProcess
+     */
+    public function testAriaLabelDefaultsToPaginationWhenNeitherSet(): void
+    {
+        $this->ensurePageNavigationFunctions();
+
+        global $wp_query;
+        $wp_query = (object) ['max_num_pages' => 3];
+
+        $renderer = new PageNavigationRenderer();
+        $output = $renderer->render();
+
+        $this->assertStringContainsString('aria-label="pagination"', $output);
+        $this->assertStringNotContainsString('ページナビゲーション', $output);
+    }
+
     private function ensurePageNavigationFunctions(): void
     {
         if (!function_exists('paginate_links')) {

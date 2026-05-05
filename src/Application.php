@@ -12,6 +12,7 @@ use Period\WpFramework\Infrastructure\WordPress\NavMenuClassEnhancer;
 use Period\WpFramework\Infrastructure\WordPress\PostClassEnhancer;
 use Period\WpFramework\Infrastructure\WordPress\PostTypeRegistrar;
 use Period\WpFramework\Infrastructure\WordPress\ScriptStyleRegistrar;
+use Period\WpFramework\Infrastructure\WordPress\Translator;
 use Period\WpFramework\Support\ArgsResolver;
 use Period\WpFramework\View\Renderer;
 
@@ -22,6 +23,7 @@ final class Application
     private Renderer $renderer;
     private ScriptStyleRegistrar $assets;
     private PostTypeRegistrar $posts;
+    private ?Translator $translator = null;
     private bool $booted = false;
 
     public function __construct(string $basePath)
@@ -41,6 +43,15 @@ final class Application
     public function posts(): PostTypeRegistrar
     {
         return $this->posts;
+    }
+
+    public function translator(): Translator
+    {
+        if ($this->translator === null) {
+            $this->translator = new Translator();
+        }
+
+        return $this->translator;
     }
 
     public function boot(): void
