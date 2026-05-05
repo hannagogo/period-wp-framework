@@ -455,6 +455,41 @@ ArrayUtil::isAssociative([1, 2, 3]);             // → false
 
 PHP 8.1 以上では `array_is_list()` を使用し、未満では同等の fallback を使用します。
 
+### Calendar
+
+月単位のカレンダーデータを生成します。HTML は生成しません。表示は View / Element 側で行います。
+
+```php
+use Period\WpFramework\Support\Calendar;
+use Period\WpFramework\Support\Locale\WeekdayName;
+
+$weeks = Calendar::month(2026, 5, [
+    'start_of_week' => 0, // 0 = Sunday, 1 = Monday
+]);
+
+foreach ($weeks as $week) {
+    foreach ($week as $day) {
+        echo $day->date();             // "2026-05-01"
+        echo $day->year;               // 2026
+        echo $day->month;              // 5
+        echo $day->day;                // 1
+        echo $day->weekday;            // 0–6 (0 = Sunday)
+        var_dump($day->isCurrentMonth); // true/false
+        var_dump($day->isToday);        // true/false
+    }
+}
+
+// 曜日ヘッダー（デフォルトは WeekdayName::EN_SHORT）
+Calendar::weekdays(0); // ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+Calendar::weekdays(1); // ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+
+// Locale の曜日名を差し替えられる
+Calendar::weekdays(1, WeekdayName::JA_SHORT); // ['月', '火', '水', '木', '金', '土', '日']
+Calendar::weekdays(0, WeekdayName::JA);       // ['日曜日', '月曜日', ...]
+```
+
+戻り値は `array<array<CalendarDay>>` の二次元配列です。各週は必ず7要素。前月・翌月の日付で埋められた日は `isCurrentMonth === false` になります。
+
 ### CssName / ImageUtil / LineEnding / Encoding
 
 ```php
