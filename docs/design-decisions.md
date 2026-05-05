@@ -49,3 +49,26 @@ PHP ファイル内の JS はエディタ補完・構文チェック・差分管
 **結論:** 挙動が正しいか判断できない箇所はまずテストで現状を記録する。
 
 コードを直すと「現状が正しかった」場合に既存動作を壊す。テストで現状を記録しておけば、将来「直す」判断をしたときに差分が明確になり、意図しない変更を防げる。これは暫定回避ではなく、影響範囲が不明な変更を安全に扱う標準的な手順。
+
+---
+
+## SiteInfo 導入の意図
+
+**結論:** WordPress の `bloginfo` / `home_url` などの取得処理を直接呼び出さず、Infrastructure 層にラップして統一的に扱う。
+
+- WordPress 依存は Infrastructure 層に閉じる。Support 層には WordPress 依存を入れない
+- HTML 生成は行わず、値の取得のみを責務とする
+- エスケープは呼び出し側に委ねる
+- WordPress 関数が存在しない環境でも安全に動作する（`function_exists()` ガード）
+
+**fallback ポリシー:**
+
+| メソッド | fallback |
+|---------|---------|
+| `name` / `description` / `url` / `themeUri` | `''` |
+| `charset` | `'UTF-8'` |
+| `language` | `'en'` |
+
+**分離の理由:** `SiteInfo` と将来の `TitleResolver` を分離することで、サイト固有情報（静的）とリクエスト依存情報（動的）の責務を明確に分ける。
+
+**今後の拡張候補:** `TitleResolver` の導入 / `TemplateFormatter` によるテンプレート整形 / `apply_filters` による最終出力のフック
