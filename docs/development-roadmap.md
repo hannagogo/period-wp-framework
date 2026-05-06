@@ -95,3 +95,23 @@
 - WordPress なし環境での動作（noop / 空返却）を維持する
 - HTML 生成は Element / View 層に委譲し、Renderer クラスはデータのみ扱う
 - Legacy コードは編集しない（新規クラスとして並行実装）
+
+
+### Pending: Infrastructure/Shortcode の取捨選択
+
+`src/Infrastructure/Shortcode/*` は現時点では移動せず、後続で取捨選択する。
+
+対象:
+
+- `ButtonShortcode.php`
+- `FetchTitleShortcode.php`
+- `TemplateUrlShortcode.php`
+- `ShortcodeInterface.php`
+
+整理方針:
+
+- `ShortcodeInterface` は WordPress FW基盤として残す可能性が高い
+- `ButtonShortcode` / `FetchTitleShortcode` / `TemplateUrlShortcode` は実用ショートコード集またはサンプル扱いとして再分類する
+- 候補は `src/WordPress/Shortcodes/` または `src/Examples/Shortcodes/`
+- Relation 実装を優先し、この項目は後続タスクとする
+
