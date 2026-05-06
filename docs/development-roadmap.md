@@ -115,3 +115,37 @@
 - 候補は `src/WordPress/Shortcodes/` または `src/Examples/Shortcodes/`
 - Relation 実装を優先し、この項目は後続タスクとする
 
+### Pending: Editor UI strategy
+
+PostAssets の `csscode` / `jscode` 編集UIは、通常の textarea を CodeMirror 化する方針とする。
+
+対象:
+
+- `csscode`
+- `jscode`
+- Sass / SCSS 編集
+- JavaScript 編集
+
+方針:
+
+- 保存値は textarea / post meta と同期する
+- CodeMirror は編集UIとして利用し、保存形式には依存させない
+- CSS / SCSS / JavaScript の syntax highlight、indent、括弧対応、validation を検討する
+- 管理画面での読み込み負荷を抑えるため、PostAssets の編集画面に限定して enqueue する
+- リッチエディタではなくコードエディタとして扱う
+
+WordPress 本体のメインエディターについては、ソース編集モードに Monaco Editor を導入する方向で検討する。
+
+対象:
+
+- 投稿本文の HTML / ブロックソース編集
+- テーマ制作用途での高度なソース編集
+- 将来的な validation / formatting / search / replace
+
+方針:
+
+- WordPress の通常編集体験は壊さない
+- Monaco Editor はソース編集用UIとして限定的に導入する
+- 保存データ構造には依存させない
+- Gutenberg / Classic Editor との接続方法を別途検証する
+
