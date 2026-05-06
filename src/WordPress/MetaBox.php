@@ -16,6 +16,7 @@ final class MetaBox
     private array $fields;
     private string $nonceAction;
     private string $nonceName;
+    private ?PostAssetsCompileService $postAssetsCompileService;
 
     public function __construct(array $config)
     {
@@ -27,6 +28,7 @@ final class MetaBox
         $fields = $config['fields'] ?? [];
         $nonceAction = $config['nonce_action'] ?? null;
         $nonceName = $config['nonce_name'] ?? null;
+        $postAssetsCompileService = $config['post_assets_compile_service'] ?? null;
 
         $this->id = is_string($id) ? $id : '';
         $this->title = is_string($title) ? $title : '';
@@ -36,6 +38,9 @@ final class MetaBox
         $this->fields = is_array($fields) ? $fields : [];
         $this->nonceAction = is_string($nonceAction) && $nonceAction !== '' ? $nonceAction : $this->id;
         $this->nonceName = is_string($nonceName) && $nonceName !== '' ? $nonceName : $this->id . '_nonce';
+        $this->postAssetsCompileService = $postAssetsCompileService instanceof PostAssetsCompileService
+            ? $postAssetsCompileService
+            : null;
     }
 
     public function register(): void
@@ -123,6 +128,13 @@ final class MetaBox
             }
 
             update_post_meta($postId, $field['name'], $values);
+
+            if ($field['name'] === PostAssets::CSS_CODE && $this->postAssetsCompileService instanceof PostAssetsCompileService) {
+                $source = $values[0] ?? '';
+                $source = is_scalar($source) ? (string) $source : '';
+
+                $this->postAssetsCompileService->compileCss($postId, $source);
+            }
         }
     }
 

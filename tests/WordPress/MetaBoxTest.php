@@ -6,6 +6,11 @@ namespace Period\WpFramework\Tests\WordPress;
 
 use PHPUnit\Framework\TestCase;
 use Period\WpFramework\WordPress\MetaBox;
+use Period\WpFramework\WordPress\PostAssets;
+use Period\WpFramework\WordPress\PostAssetsCompileResult;
+use Period\WpFramework\WordPress\PostAssetsCompileService;
+use Period\WpFramework\WordPress\PostAssetsCompilerInterface;
+use Period\WpFramework\WordPress\PostMetaManager;
 
 final class MetaBoxTest extends TestCase
 {
@@ -908,6 +913,132 @@ final class MetaBoxTest extends TestCase
 
         $this->assertNotEmpty($METABOX_TEST_META_UPDATES);
         $this->assertSame(['from_postdata'], $METABOX_TEST_META_UPDATES[0]['value']);
+    }
+
+    // --- PostAssets compile integration tests ---
+
+    private function makeCompileService(PostAssetsCompilerInterface $compiler): PostAssetsCompileService
+    {
+        return new PostAssetsCompileService(new PostMetaManager(), $compiler);
+    }
+
+    private function makeMetaBoxWithCompileService(PostAssetsCompileService $service): MetaBox
+    {
+        return new MetaBox([
+            'id' => 'assets_box',
+            'title' => 'Assets',
+            'post_type' => 'post',
+            'fields' => [
+                ['name' => PostAssets::CSS_CODE, 'type' => 'textarea'],
+                ['name' => PostAssets::JS_CODE,  'type' => 'textarea'],
+            ],
+            'post_assets_compile_service' => $service,
+        ]);
+    }
+
+    public function testCompileServiceIsCalledWhenCssCodeIsSaved(): void
+    {
+        $compiler = $this->createMock(PostAssetsCompilerInterface::class);
+        $compiler->expects($this->once())
+            ->method('compile')
+            ->willReturn(new PostAssetsCompileResult(true, 'body{}'));
+
+        $metaBox = $this->makeMetaBoxWithCompileService($this->makeCompileService($compiler));
+
+        $metaBox->save(1, [
+            'assets_box_nonce'    => 'any_value',
+            PostAssets::CSS_CODE  => 'body { color: red; }',
+        ]);
+    }
+
+    public function testCompileSourceMatchesSanitizedInputValue(): void
+    {
+        $capturedSource = null;
+
+        $compiler = $this->createMock(PostAssetsCompilerInterface::class);
+        $compiler->expects($this->once())
+            ->method('compile')
+            ->willReturnCallback(function (string $src) use (&$capturedSource): PostAssetsCompileResult {
+                $capturedSource = $src;
+                return new PostAssetsCompileResult(true, '');
+            });
+
+        $metaBox = $this->makeMetaBoxWithCompileService($this->makeCompileService($compiler));
+
+        $metaBox->save(1, [
+            'assets_box_nonce'    => 'any_value',
+            PostAssets::CSS_CODE  => 'body { margin: 0; }',
+        ]);
+
+        $this->assertSame('body { margin: 0; }', $capturedSource);
+    }
+
+    public function testCompileServiceIsNotCalledForNonCssField(): void
+    {
+        $compiler = $this->createMock(PostAssetsCompilerInterface::class);
+        $compiler->expects($this->never())
+            ->method('compile');
+
+        $metaBox = new MetaBox([
+            'id' => 'assets_box',
+            'title' => 'Assets',
+            'post_type' => 'post',
+            'fields' => [
+                ['name' => PostAssets::JS_CODE, 'type' => 'textarea'],
+            ],
+            'post_assets_compile_service' => $this->makeCompileService($compiler),
+        ]);
+
+        $metaBox->save(1, [
+            'assets_box_nonce'  => 'any_value',
+            PostAssets::JS_CODE => 'console.log("ok");',
+        ]);
+    }
+
+    public function testMetaBoxSaveContinuesWhenCompileFails(): void
+    {
+        global $METABOX_TEST_META_UPDATES;
+        $METABOX_TEST_META_UPDATES = [];
+
+        $compiler = $this->createMock(PostAssetsCompilerInterface::class);
+        $compiler->method('compile')
+            ->willReturn(new PostAssetsCompileResult(false, '', 'syntax error'));
+
+        $metaBox = $this->makeMetaBoxWithCompileService($this->makeCompileService($compiler));
+
+        $metaBox->save(1, [
+            'assets_box_nonce'    => 'any_value',
+            PostAssets::CSS_CODE  => 'body {',
+            PostAssets::JS_CODE   => 'console.log("ok");',
+        ]);
+
+        // Both fields must have been persisted despite compile failure
+        $savedKeys = array_column($METABOX_TEST_META_UPDATES, 'key');
+        $this->assertContains(PostAssets::CSS_CODE, $savedKeys);
+        $this->assertContains(PostAssets::JS_CODE, $savedKeys);
+    }
+
+    public function testMetaBoxSaveFlowIsUnaffectedWithoutCompileService(): void
+    {
+        global $METABOX_TEST_META_UPDATES;
+        $METABOX_TEST_META_UPDATES = [];
+
+        $metaBox = new MetaBox([
+            'id' => 'plain_box',
+            'title' => 'Plain',
+            'post_type' => 'post',
+            'fields' => [
+                ['name' => PostAssets::CSS_CODE, 'type' => 'textarea'],
+            ],
+        ]);
+
+        $metaBox->save(1, [
+            'plain_box_nonce'     => 'any_value',
+            PostAssets::CSS_CODE  => 'body {}',
+        ]);
+
+        $savedKeys = array_column($METABOX_TEST_META_UPDATES, 'key');
+        $this->assertContains(PostAssets::CSS_CODE, $savedKeys);
     }
 
     /** @runInSeparateProcess */
